@@ -6,26 +6,27 @@
   <link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
 <header>
-  <div id="pageT">Picross</div>
-  <div class="row">
-    <div id="pageL" class="columnleft">
-        <button type="button" name="menu-button" href="menu.html">Menu</button>
-        <button type="button" name="settings-button">Settings</button>
-    </div>
-    <div id="logo">
-      <img src="" alt="">
-    </div>
-  </div>
+  <nav>
+    <ul class="menu">
+      <li class="menu-left">
+    		<a class="inactive" href="index.html">Title</a>
+    	</li>
+    	<li class="menu-left">
+    	  <a class="inactive" href="menu.html">Menu</a>
+    	</li>
+      <li class="menu-left">
+    	  <a class="active" href="game.html">Start Game</a>
+    	</li>
+    	<li class="menu-right">
+    		<a class="inactive" href="settings.html">Settings</a>
+    	</li>
+    </ul>
+  </nav>
 </header>
 <body>
-  <div>
-    <table>
-      <tr><td></td></tr>
-      <tr></tr>
-      <tr></tr>
-      <tr></tr>
-    </table>
-  </div>
+
+  <!-- when table is generated, it will populate the picross div -->
+  <div id="picross"></div>
 
 </body>
 </html>

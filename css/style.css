@@ -1,3 +1,4 @@
+/* form styling */
 .radios {
 	background: none;
 	display: inline;
@@ -27,6 +28,9 @@
 	margin-top: 3px;
 }
 
+/* end form styling */
+
+/* html styling */
 body {
   background-color: black;
   border-collapse: collapse;
@@ -49,6 +53,12 @@ h2 {
   color: gray;
 }
 
+article p {
+  color: white;
+}
+/* end html styling */
+
+/* Nav bar styling */
 ul.menu {
   list-style-type: none;
   margin: 0;
@@ -58,9 +68,14 @@ ul.menu {
   border: 1px solid #bbb;
 }
 
-li.menu {
+li.menu-left {
   float: left;
   border-right: 1px solid #bbb;
+}
+
+li.menu-right {
+	float: right;
+  border-left: 1px solid #bbb;
 }
 
 li a {
@@ -71,19 +86,17 @@ li a {
     text-decoration: none;
 }
 
-a.menu{
-  color: white;
+a.inactive:hover {
+  background-color: #111;
 }
 
-a.menu:hover {
+a.menu-right:hover {
   background-color: #111;
 }
 
 .active {
     background-color: gray;
-    color: white;
+    color: black;
 }
 
-article p {
-  color: white;
-}
+/* end Nav bar styling */
