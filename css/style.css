@@ -28,12 +28,16 @@
 	margin-top: 3px;
 }
 
+div.button{
+	text-align: center;
+	padding-top: 10px;
+}
+
 /* end form styling */
 
 /* html styling */
 body {
-  background-color: black;
-  border-collapse: collapse;
+  background-color: #2F2F2F;
   padding-left: 0;
 }
 
@@ -64,8 +68,15 @@ ul.menu {
   margin: 0;
   padding: 0;
   overflow: hidden;
-  background-color: #333;
-  border: 1px solid #bbb;
+  /* border: 1px solid #bbb; */
+}
+
+li {
+	color: white;
+}
+
+li.menu {
+	padding-top: 10px;
 }
 
 li.menu-left {

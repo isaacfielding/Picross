@@ -4,26 +4,24 @@
   <meta charset="UTF-8">
   <title>Picross Game</title>
   <link rel="stylesheet" type="text/css" href="css/style.css">
+  <script src="js/game.js" charset="utf-8"></script>
 </head>
 <header>
-  <nav>
-    <ul class="menu">
-      <li class="menu-left">
-    		<a class="inactive" href="index.html">Title</a>
-    	</li>
-    	<li class="menu-left">
-    	  <a class="inactive" href="menu.html">Menu</a>
-    	</li>
-      <li class="menu-left">
-    	  <a class="active" href="game.html">Start Game</a>
-    	</li>
-    	<li class="menu-right">
-    		<a class="inactive" href="settings.html">Settings</a>
-    	</li>
-    </ul>
-  </nav>
+  <!-- needs a timer value display element: left side -->
+  <h1>Picross</h1>
+  <!-- turn counter on the right -->
 </header>
 <body>
+
+  <div class="button">
+    <button type="button" onclick="location.href='menu.html'">Menu</button>
+    <select name="size">
+      <option value="" disabled selected>Choose a Size</option>
+      <option value="7">7 x 7</option>
+      <option value="13">13 x 13</option>
+    </select>
+    <button type="button" onclick="generate_table()">Generate</button>
+  </div>
 
   <!-- when table is generated, it will populate the picross div -->
   <div id="picross"></div>

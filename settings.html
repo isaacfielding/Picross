@@ -6,24 +6,28 @@
   <link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
 <header>
-  <nav>
-    <ul class="menu">
-      <li class="menu-left">
-    		<a class="inactive" href="index.html">Title</a>
-    	</li>
-    	<li class="menu-left">
-    	  <a class="inactive" href="menu.html">Menu</a>
-    	</li>
-      <li class="menu-left">
-    	  <a class="inactive" href="game.html">Start Game</a>
-    	</li>
-    	<li class="menu-right">
-    		<a class="active" href="settings.html">Settings</a>
-    	</li>
-    </ul>
-  </nav>
+  <h1>Settings</h1>
 </header>
 <body>
-
+  <div class="button">
+    <button type="button" onclick="location.href='menu.html'">Back</button>
+  </div>
+  <div class="button">
+    <form action="data.php" method="post">
+      <ul class="menu">
+        <li class="menu">
+          <label for="grid-color">Grid Color:</label>
+          <input type="text" name="grid-color" value="" placeholder="ex. #000000">
+        </li>
+        <li class="menu">
+          <label for="block-color">Block Color:</label>
+          <input type="text" name="block-color" value="" placeholder="ex. #000000">
+        </li>
+        <li class="menu">
+          <input type="submit" class="save-settings" value="Save Settings">
+        </li>
+      </ul>
+    </form>
+  </div>
 </body>
 </html>
