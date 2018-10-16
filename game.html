@@ -15,12 +15,16 @@
 
   <div class="button">
     <button type="button" onclick="location.href='menu.html'">Menu</button>
+
+    <!-- game size selector -->
     <select name="size">
       <option value="" disabled selected>Choose a Size</option>
       <option value="7">7 x 7</option>
       <option value="13">13 x 13</option>
     </select>
-    <button type="button" onclick="generate_table()">Generate</button>
+
+    <!-- starts game with specified size when clicked -->
+    <button type="button" id="generate">Generate</button>
   </div>
 
   <!-- when table is generated, it will populate the picross div -->

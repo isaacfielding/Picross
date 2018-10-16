@@ -1,3 +1,6 @@
+// Generate a new puzzle
+$("#generate").click(start);
+
 function generate_table(width, height) {
   var body = document.getElementsByTagName('body')[0];
   // creates a <table> element and a <tbody> element
@@ -29,4 +32,8 @@ function generate_table(width, height) {
   body.appendChild(tbl);
   // sets the border attribute of tbl to 2;
   tbl.setAttribute("border", "2");
+}
+
+function start() {
+  generate_table(width, height)
 }
