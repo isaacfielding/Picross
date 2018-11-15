@@ -5,14 +5,25 @@ function start() {
     delete_table();
   }
 
-  //  builds a new table based on the value of the selector field
+  // builds a new table based on the value of the selector field
   generate_table();
+
+
 }
 
-// Generate a new puzzle
+// generate a new puzzle
 function generate_table() {
   var height = document.getElementById("size").value;
   var width = height;
+
+  // generate key for puzzle
+  var puzzle = creatRandomPuzzle(height);
+  console.log(puzzle);
+
+  var topHints = makeTopHints(puzzle);
+  // console.log(topHints);
+  var sideHints = makeSideHints(puzzle);
+  // console.log(sideHints);
 
   var area = document.getElementById("picross");
   if(width == 7) area.setAttribute("style", "width: 15%");
@@ -28,7 +39,7 @@ function generate_table() {
     var row = document.createElement("tr");
 
     for (var j = 0; j < width; j++) {
-      // Create a <td> element and a text node, make the text
+      // create a <td> element and a text node, make the text
       // node the contents of the <td>, and put the <td> at
       // the end of the table row
       var cell = document.createElement("td");
@@ -49,8 +60,132 @@ function generate_table() {
   tbl.setAttribute("id", "ptable");
 }
 
-// Removes a previous puzzle
+// removes a previous puzzle
 function delete_table() {
   var table = document.getElementById("ptable");
   table.parentNode.removeChild(table);
+}
+
+// creates a random 2d array of puzzle
+function creatRandomPuzzle(size){
+
+  var puzzle = [];
+
+  // creates a 2d array
+  for (var i = 0; i < size; i++) {
+    puzzle[i] = [];
+  }
+
+  // initializes the array with booleans as a key for the puzzle
+	for (var i = 0; i < size; i++) {
+		for (var j = 0; j < size; j++) {
+			if (Math.random() >= 0.4) {
+				puzzle[i][j] = true;
+			} else {
+				puzzle[i][j] = false;
+			}
+		}
+  }
+
+  // returns a 2d array (answer key)
+  return puzzle;
+}
+
+// creates a 2d array of hints for the top of the puzzle
+function makeTopHints(puzzle) {
+
+  var topHints = [];
+
+  // creates a 2d array
+  for (var i = 0; i < puzzle.length; i++) {
+    topHints[i] = [];
+  }
+  
+  // counter for keeping track of the number of trues in a row.
+  var counter = 0;
+  
+  for (var j = 0; j < puzzle.length; j++) {
+		for (var i = 0; i < puzzle.length; i++) {
+			if (puzzle[i][j] == true) {
+        counter++;
+      }
+      if (puzzle[i][j] == false){
+        if (counter !== 0) topHints[j].push(counter);
+        counter = 0;
+      }
+    }
+    // console.log("top hints (" + i + j + ")");
+    if (counter !== 0) topHints[j].push(counter);
+    counter = 0;
+  }
+
+  printTopArrays(topHints);
+  // returns a 2d array (top hints)
+  return topHints;
+}
+
+// creates a 2d array of hints for the side of the puzzle
+function makeSideHints(puzzle) {
+
+  var sideHints = [];
+
+  // creates a 2d array
+  for (var i = 0; i < puzzle.length; i++) {
+    sideHints[i] = [];
+  }
+
+  // counter for keeping track of the number of trues in a row.
+  var counter = 0;
+
+  // traverse the puzzle and initialize a counter each time a true is found and stop the counter when a false is found
+  for (var i = 0; i < puzzle.length; i++) {
+		for (var j = 0; j < puzzle.length; j++) {
+			if (puzzle[i][j] == true) {
+        counter++;
+      }
+      else {
+        if (counter !== 0) sideHints[i].push(counter);
+        counter = 0;
+      }
+    }
+    // console.log("side hints (" + i + j + ")");
+    if (counter !== 0) sideHints[i].push(counter);
+    counter = 0;
+  }
+
+  printSideArrays(sideHints);
+  // returns a 2d array (side hints)
+  return sideHints;
+}
+
+// check the values of the entire table against the answer key
+function checkPuzzle(table) {
+  for (var i = 0; i < size; i++) {
+		for (var j = 0; j < size; j++) {
+			if (table[i][j] !== puzzle[i][j]) {
+        // return false
+        return false;
+			}
+		}
+  }
+}
+
+// testing hint creation
+function printTopArrays(array){
+  for (var j = 0; j < array.length; j++){
+    console.log("column " + j + " hints = ");
+    for (var i = 0; i < array[j].length; i++){
+      console.log(array[i]);
+    }
+  }
+}
+
+// testing hint creation
+function printSideArrays(array){
+  for (var i = 0; i < array.length; i++){
+    console.log("row " + i + " hints = ");
+    for (var j = 0; j < array[i].length; j++){
+      console.log(array[j]);
+    }
+  }
 }
