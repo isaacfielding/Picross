@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <title>Picross Game</title>
   <link rel="stylesheet" type="text/css" href="css/style.css">
-  <script src="js/game.js" charset="utf-8"></script>
+  
 </head>
 <header>
   <!-- needs a timer value display element: left side -->
@@ -17,18 +17,19 @@
     <button type="button" onclick="location.href='menu.html'">Menu</button>
 
     <!-- game size selector -->
-    <select name="size">
+    <select id="size">
       <option value="" disabled selected>Choose a Size</option>
       <option value="7">7 x 7</option>
       <option value="13">13 x 13</option>
     </select>
 
     <!-- starts game with specified size when clicked -->
-    <button type="button" id="generate">Generate</button>
+    <button type="button" id="generate" onclick="start()">Generate</button>
   </div>
 
   <!-- when table is generated, it will populate the picross div -->
   <div id="picross"></div>
 
 </body>
+<script src="js/game.js" charset="utf-8"></script>
 </html>

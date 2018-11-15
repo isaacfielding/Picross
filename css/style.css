@@ -62,13 +62,31 @@ article p {
 }
 /* end html styling */
 
+/* Picross Table Styling */
+
+#picross {
+  margin: auto;
+  padding-top: 5%;
+  padding-bottom: 15%;
+}
+
+td {
+  width: 20px;
+  height: 20px;
+}
+
+td:hover {
+  background-color: #bbb;
+}
+
+/* End Picross Table Styling */
+
 /* Nav bar styling */
 ul.menu {
   list-style-type: none;
   margin: 0;
   padding: 0;
   overflow: hidden;
-  /* border: 1px solid #bbb; */
 }
 
 li {

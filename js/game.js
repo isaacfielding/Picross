@@ -1,8 +1,23 @@
-// Generate a new puzzle
-$("#generate").click(start);
+// initializes the page to a new game
+function start() {
+  // deletes a table if there is already one
+  if (document.getElementById("ptable") != null){
+    delete_table();
+  }
 
-function generate_table(width, height) {
-  var body = document.getElementsByTagName('body')[0];
+  //  builds a new table based on the value of the selector field
+  generate_table();
+}
+
+// Generate a new puzzle
+function generate_table() {
+  var height = document.getElementById("size").value;
+  var width = height;
+
+  var area = document.getElementById("picross");
+  if(width == 7) area.setAttribute("style", "width: 15%");
+  if (width == 13) area.setAttribute("style", "width: 27%");
+
   // creates a <table> element and a <tbody> element
   var tbl = document.createElement("table");
   var tbody = document.createElement("tbody");
@@ -17,8 +32,7 @@ function generate_table(width, height) {
       // node the contents of the <td>, and put the <td> at
       // the end of the table row
       var cell = document.createElement("td");
-      var cellText = document.createTextNode("cell in row "+i+", column "+j);
-      cell.appendChild(cellText);
+      cell.setAttribute("id", String(i)+String(j));
       row.appendChild(cell);
     }
 
@@ -29,11 +43,14 @@ function generate_table(width, height) {
   // put the <tbody> in the <table>
   tbl.appendChild(tbody);
   // appends <table> into <body>
-  body.appendChild(tbl);
-  // sets the border attribute of tbl to 2;
+  area.appendChild(tbl);
+  // sets the border attribute of tbl to 2 and gives the table an id 'ptable'
   tbl.setAttribute("border", "2");
+  tbl.setAttribute("id", "ptable");
 }
 
-function start() {
-  generate_table(width, height)
+// Removes a previous puzzle
+function delete_table() {
+  var table = document.getElementById("ptable");
+  table.parentNode.removeChild(table);
 }
