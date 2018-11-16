@@ -21,13 +21,13 @@ function generate_table() {
   console.log(puzzle);
 
   var topHints = makeTopHints(puzzle);
-  // console.log(topHints);
+  console.log(topHints);
   var sideHints = makeSideHints(puzzle);
-  // console.log(sideHints);
+  console.log(sideHints);
 
   var area = document.getElementById("picross");
-  if(width == 7) area.setAttribute("style", "width: 15%");
-  if (width == 13) area.setAttribute("style", "width: 27%");
+  if(width == 7) area.setAttribute("style", "width: 50%");
+  if (width == 13) area.setAttribute("style", "width: 50%");
 
   // creates a <table> element and a <tbody> element
   var tbl = document.createElement("table");
@@ -42,8 +42,12 @@ function generate_table() {
       // create a <td> element and a text node, make the text
       // node the contents of the <td>, and put the <td> at
       // the end of the table row
-      var cell = document.createElement("td");
+      var cell = document.createElement("button");
       cell.setAttribute("id", String(i)+String(j));
+      cell.setAttribute("class","off");
+      cell.setAttribute("type", "button")
+      cell.setAttribute("onclick","colorChange(\""+String(i)+String(j)+"\")")
+      cell.setAttribute("background-color","white");
       row.appendChild(cell);
     }
 
@@ -114,12 +118,11 @@ function makeTopHints(puzzle) {
         counter = 0;
       }
     }
-    // console.log("top hints (" + i + j + ")");
     if (counter !== 0) topHints[j].push(counter);
     counter = 0;
   }
 
-  printTopArrays(topHints);
+  // printTopArrays(topHints);
   // returns a 2d array (top hints)
   return topHints;
 }
@@ -148,12 +151,11 @@ function makeSideHints(puzzle) {
         counter = 0;
       }
     }
-    // console.log("side hints (" + i + j + ")");
     if (counter !== 0) sideHints[i].push(counter);
     counter = 0;
   }
 
-  printSideArrays(sideHints);
+  // printSideArrays(sideHints);
   // returns a 2d array (side hints)
   return sideHints;
 }
@@ -168,6 +170,27 @@ function checkPuzzle(table) {
 			}
 		}
   }
+  return false;
+}
+
+// button color change for selection
+function colorChange(id) {
+  var table = document.getElementById(picross);
+  var button = document.getElementById(id);
+ 
+  var state = button.getAttribute("class");
+  
+  if (state == "off") {
+    button.style.backgroundColor = "green";
+    button.setAttribute("class","on");
+  }
+  if (state == "on") {
+    button.style.backgroundColor = "white";
+    button.setAttribute("class","off");
+  }
+  
+  // var won = checkPuzzle(table);
+  // console.log(won);
 }
 
 // testing hint creation

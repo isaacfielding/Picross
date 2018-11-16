@@ -64,19 +64,25 @@ article p {
 
 /* Picross Table Styling */
 
+#picross tr {
+  border: 0px;
+}
+
 #picross {
   margin: auto;
   padding-top: 5%;
   padding-bottom: 5%;
 }
 
-td {
-  width: 20px;
-  height: 20px;
+#picross table tr button {
+  border-color: #111;
+  padding: 0%;
+  width: 40px;
+  height: 40px;
 }
 
-td:hover {
-  background-color: #bbb;
+#picross table tr button:hover {
+  background-color: rgb(168, 168, 168);
 }
 
 /* End Picross Table Styling */
