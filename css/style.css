@@ -82,7 +82,7 @@ article p {
 }
 
 #picross table tr button:hover {
-  background-color: rgb(168, 168, 168);
+  background-color: white;
 }
 
 /* End Picross Table Styling */

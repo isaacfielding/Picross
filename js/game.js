@@ -8,7 +8,6 @@ function start() {
   // builds a new table based on the value of the selector field
   generate_table();
 
-
 }
 
 // generate a new puzzle
@@ -191,6 +190,13 @@ function colorChange(id) {
   
   // var won = checkPuzzle(table);
   // console.log(won);
+}
+
+// starts the game with a given game type
+function proceed() {
+  var gameType = document.getElementById("mode").value;
+
+  
 }
 
 // testing hint creation
