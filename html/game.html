@@ -24,8 +24,19 @@
 
     <!-- starts game with specified size when clicked -->
     <button type="button" id="generate" onclick="start()">Generate</button>
-  </div>
 
+    <!-- these breaks make the game type below the other buttons -->
+  <br>
+
+  <br>
+
+    <select id="mode">
+      <option value="" disabled selected>Select a Mode</option>
+      <option value="arcade">Arcade Mode</option>
+      <option value="Time Attack">Time Attack Mode</option>
+    </select>
+
+  </div>
   <div id="gui">
     <ul id="elements">
       <h3>Elements</h3>
@@ -39,6 +50,7 @@
 
   <!-- when table is generated, it will populate the picross div -->
   <div id="picross"></div>
+
 
 </body>
 <script src="../js/game.js" charset="utf-8"></script>
