@@ -226,7 +226,6 @@ function makeTopHints(puzzle) {
     counter = 0;
   }
 
-  // printTopArrays(topHints);
   // returns a 2d array (top hints)
   return topHints;
 }
@@ -259,7 +258,6 @@ function makeSideHints(puzzle) {
     counter = 0;
   }
 
-  // printSideArrays(sideHints);
   // returns a 2d array (side hints)
   return sideHints;
 }
@@ -269,7 +267,6 @@ function checkPuzzle(table) {
   for (var i = 0; i < size; i++) {
 		for (var j = 0; j < size; j++) {
 			if (table[i][j] !== puzzle[i][j]) {
-        // return false
         return false;
 			}
 		}
@@ -279,25 +276,31 @@ function checkPuzzle(table) {
 
 // button color change for selection
 function buttonClick(id) {
-  turnCounter++;
+  // turnCounter++;
   var table = document.getElementById(picross);
   var button = document.getElementById(id);
  
   var state = button.getAttribute("class");
   
   if (state == "off") {
+    turnCounter++;
     button.style.backgroundColor = "green";
     button.setAttribute("class","on");
   }
-  if (state == "on") {
-    button.style.backgroundColor = "white";
-    button.setAttribute("class","off");
-  }
+  // if (state == "on") {
+  //   button.style.backgroundColor = "white";
+  //   button.setAttribute("class","off");
+  // }
   
   updateTurns();
   
   // var won = checkPuzzle(table);
   // console.log(won);
+}
+
+function delete_table() {
+  var table = document.getElementById("ptable");
+  table.parentNode.removeChild(table);
 }
 
 function updateTurns() {

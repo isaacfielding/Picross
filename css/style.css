@@ -57,7 +57,16 @@ h2 {
   color: gray;
 }
 
+section h2 {
+  text-align: center;
+}
+h3 {
+  text-align: center;
+  color: gray;
+}
+
 article p {
+  text-align: center;
   color: white;
 }
 /* end html styling */
