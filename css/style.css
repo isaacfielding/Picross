@@ -57,16 +57,25 @@ h2 {
   color: gray;
 }
 
+<<<<<<< HEAD
  p {
+=======
+section h2 {
+  text-align: center;
+}
+h3 {
+  text-align: center;
+  color: gray;
+}
+
+article p {
+  text-align: center;
+>>>>>>> c637a79f4cb619fbd44f50b3032a36059265a691
   color: white;
 }
 /* end html styling */
 
 /* Picross Table Styling */
-
-#picross tr {
-  border: 1px;
-}
 
 #picross {
   margin: auto;
@@ -76,7 +85,6 @@ h2 {
 
 #picross table tr button {
   border-color: #111;
-  padding: 0%;
   width: 40px;
   height: 40px;
   margin: 10;

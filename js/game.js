@@ -1,3 +1,8 @@
+
+// global variables
+var turnCounter = 0;
+var elemCounter = 0;
+
 // initializes the page to a new game
 function start() {
   // deletes a table if there is already one
@@ -15,6 +20,7 @@ function generate_table() {
   var height = document.getElementById("size").value;
   var width = height;
 
+  elemCounter = 0;
   // generate key for puzzle
   var puzzle = creatRandomPuzzle(height);
   console.log(puzzle);
@@ -45,7 +51,7 @@ function generate_table() {
       cell.setAttribute("id", String(i)+String(j));
       cell.setAttribute("class","off");
       cell.setAttribute("type", "button")
-      cell.setAttribute("onclick","colorChange(\""+String(i)+String(j)+"\")")
+      cell.setAttribute("onclick","buttonClick(\""+String(i)+String(j)+"\")")
       cell.setAttribute("background-color","white");
       row.appendChild(cell);
     }
@@ -61,13 +67,110 @@ function generate_table() {
   // sets the border attribute of tbl to 2 and gives the table an id 'ptable'
   tbl.setAttribute("border", "2");
   tbl.setAttribute("id", "ptable");
+
+  turnCounter = 0;
 }
 
-// removes a previous puzzle
-function delete_table() {
-  var table = document.getElementById("ptable");
-  table.parentNode.removeChild(table);
-}
+// generate a new puzzle
+// function display_top_hints(size, hints) {
+//   var height = size;
+//   var width = size;
+
+//   var topHints = makeTopHints(puzzle);
+//   var sideHints = makeSideHints(puzzle);
+//   console.log(sideHints);
+
+//   var area = document.getElementById("picross");
+//   if (width == 7) area.setAttribute("style", "width: 50%");
+//   if (width == 13) area.setAttribute("style", "width: 50%");
+
+//   // creates a <table> element and a <tbody> element
+//   var tbl = document.createElement("table");
+//   var tbody = document.createElement("tbody");
+
+//   // creating all cells
+//   for (var i = 0; i < height; i++) {
+//     // creates a table row
+//     var row = document.createElement("tr");
+
+//     for (var j = 0; j < width; j++) {
+//       // create a <td> element and a text node, make the text
+//       // node the contents of the <td>, and put the <td> at
+//       // the end of the table row
+//       var cell = document.createElement("button");
+//       cell.setAttribute("id", String(i) + String(j));
+//       cell.setAttribute("class", "off");
+//       cell.setAttribute("type", "button")
+//       cell.setAttribute("onclick", "colorChange(\"" + String(i) + String(j) + "\")")
+//       cell.setAttribute("background-color", "white");
+//       row.appendChild(cell);
+//     }
+
+//     // add the row to the end of the table body
+//     tbl.appendChild(row);
+//   }
+
+//   // put the <tbody> in the <table>
+//   tbl.appendChild(tbody);
+//   // appends <table> into <body>
+//   area.appendChild(tbl);
+//   // sets the border attribute of tbl to 2 and gives the table an id 'ptable'
+//   tbl.setAttribute("border", "2");
+//   tbl.setAttribute("id", "ptable");
+// }
+
+// generate a new puzzle
+// function display_side_hints() {
+//   var height = document.getElementById("size").value;
+//   var width = height;
+
+//   // generate key for puzzle
+//   var puzzle = creatRandomPuzzle(height);
+//   console.log(puzzle);
+
+//   var topHints = makeTopHints(puzzle);
+//   console.log(topHints);
+//   var sideHints = makeSideHints(puzzle);
+//   console.log(sideHints);
+
+//   var area = document.getElementById("picross");
+//   if (width == 7) area.setAttribute("style", "width: 50%");
+//   if (width == 13) area.setAttribute("style", "width: 50%");
+
+//   // creates a <table> element and a <tbody> element
+//   var tbl = document.createElement("table");
+//   var tbody = document.createElement("tbody");
+
+//   // creating all cells
+//   for (var i = 0; i < height; i++) {
+//     // creates a table row
+//     var row = document.createElement("tr");
+
+//     for (var j = 0; j < width; j++) {
+//       // create a <td> element and a text node, make the text
+//       // node the contents of the <td>, and put the <td> at
+//       // the end of the table row
+//       var cell = document.createElement("button");
+//       cell.setAttribute("id", String(i) + String(j));
+//       cell.setAttribute("class", "off");
+//       cell.setAttribute("type", "button")
+//       cell.setAttribute("onclick", "colorChange(\"" + String(i) + String(j) + "\")")
+//       cell.setAttribute("background-color", "white");
+//       row.appendChild(cell);
+//     }
+
+//     // add the row to the end of the table body
+//     tbl.appendChild(row);
+//   }
+
+//   // put the <tbody> in the <table>
+//   tbl.appendChild(tbody);
+//   // appends <table> into <body>
+//   area.appendChild(tbl);
+//   // sets the border attribute of tbl to 2 and gives the table an id 'ptable'
+//   tbl.setAttribute("border", "2");
+//   tbl.setAttribute("id", "ptable");
+// }
 
 // creates a random 2d array of puzzle
 function creatRandomPuzzle(size){
@@ -83,11 +186,13 @@ function creatRandomPuzzle(size){
 	for (var i = 0; i < size; i++) {
 		for (var j = 0; j < size; j++) {
 			if (Math.random() >= 0.4) {
-				puzzle[i][j] = true;
+        puzzle[i][j] = true;
+        elemCounter++;
 			} else {
 				puzzle[i][j] = false;
 			}
-		}
+    }
+    updateElements();
   }
 
   // returns a 2d array (answer key)
@@ -121,7 +226,6 @@ function makeTopHints(puzzle) {
     counter = 0;
   }
 
-  // printTopArrays(topHints);
   // returns a 2d array (top hints)
   return topHints;
 }
@@ -154,7 +258,6 @@ function makeSideHints(puzzle) {
     counter = 0;
   }
 
-  // printSideArrays(sideHints);
   // returns a 2d array (side hints)
   return sideHints;
 }
@@ -164,7 +267,6 @@ function checkPuzzle(table) {
   for (var i = 0; i < size; i++) {
 		for (var j = 0; j < size; j++) {
 			if (table[i][j] !== puzzle[i][j]) {
-        // return false
         return false;
 			}
 		}
@@ -173,30 +275,42 @@ function checkPuzzle(table) {
 }
 
 // button color change for selection
-function colorChange(id) {
+function buttonClick(id) {
+  // turnCounter++;
   var table = document.getElementById(picross);
   var button = document.getElementById(id);
  
   var state = button.getAttribute("class");
   
   if (state == "off") {
+    turnCounter++;
     button.style.backgroundColor = "green";
     button.setAttribute("class","on");
   }
-  if (state == "on") {
-    button.style.backgroundColor = "white";
-    button.setAttribute("class","off");
-  }
+  // if (state == "on") {
+  //   button.style.backgroundColor = "white";
+  //   button.setAttribute("class","off");
+  // }
+  
+  updateTurns();
   
   // var won = checkPuzzle(table);
   // console.log(won);
 }
 
-// starts the game with a given game type
-function proceed() {
-  var gameType = document.getElementById("mode").value;
+function delete_table() {
+  var table = document.getElementById("ptable");
+  table.parentNode.removeChild(table);
+}
 
-  
+function updateTurns() {
+  var turns = document.getElementById("turnCount");
+  turns.innerText = turnCounter;
+}
+
+function updateElements() {
+  var elems = document.getElementById("elemCount");
+  elems.innerText = elemCounter;
 }
 
 // testing hint creation

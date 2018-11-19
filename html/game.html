@@ -12,7 +12,6 @@
   <!-- turn counter on the right -->
 </header>
 <body>
-
   <div class="button">
     <button type="button" onclick="location.href='menu.html'">Menu</button>
 
@@ -28,7 +27,6 @@
 
     <!-- these breaks make the game type below the other buttons -->
   <br>
-
   <br>
 
     <select id="mode">
@@ -36,12 +34,20 @@
       <option value="arcade">Arcade Mode</option>
       <option value="Time Attack">Time Attack Mode</option>
     </select>
-
   </div>
 
-  
+  <!-- Display elements for game progress -->
+  <div id="gui">
+    <ul id="elements">
+      <h2>Elements</h2>
+      <h2 id="elemCount">0</h2>
+    </ul>
+    <ul id="turns">
+      <h2>Turns</h2>
+      <h2 id="turnCount">0</h2>
+    </ul>
+  </div>
 
- 
   <!-- when table is generated, it will populate the picross div -->
   <div id="picross"></div>
 
