@@ -1,13 +1,19 @@
 
 // global variables
 var turnCounter = 0;
+var turns = document.getElementById("turnCount");
 var elemCounter = 0;
+var elems = document.getElementById("elemCount");
 var startTime;
 var currentTime;
 var timeDiff;
 var clock = document.getElementById("time");;
 var minutes = 0;
 var seconds = 0;
+var puzzle = [];
+var answer = [];
+var topHints = [];
+var sideHint = [];
 
 
 // initializes the page to a new game
@@ -28,12 +34,12 @@ function generate_table() {
 
   elemCounter = 0;
   // generate key for puzzle
-  var puzzle = creatRandomPuzzle(height);
+  puzzle = creatRandomPuzzle(height);
   console.log(puzzle);
 
-  var topHints = makeTopHints(puzzle);
+  topHints = makeTopHints(puzzle);
   console.log(topHints);
-  var sideHints = makeSideHints(puzzle);
+  sideHints = makeSideHints(puzzle);
   console.log(sideHints);
 
   var area = document.getElementById("picross");
@@ -104,10 +110,7 @@ function generate_table() {
 // creates a random 2d array of puzzle
 function creatRandomPuzzle(size){
 
-  var puzzle = [];
-
   // creates a 2d array
-  console.log(size);
   for (var i = 0; i < size - 1; i++) {
     puzzle[i] = [];
   }
@@ -193,33 +196,68 @@ function makeSideHints(puzzle) {
 }
 
 // check the values of the entire table against the answer key
-function checkPuzzle(table) {
-  for (var i = 1; i < size; i++) {
-		for (var j = 1; j < size; j++) {
-			if (table[i][j] !== puzzle[i][j]) {
-        return false;
-			}
-		}
+function checkPuzzle() {
+ 
+  console.log("checkPuzzle debugging --------");
+
+  // creates a 2d array
+  for (var i = 0; i < puzzle.length; i++) {
+    answer[i] = [];
   }
-  return false;
+
+  var grid = document.getElementById("ptable");
+  
+  // for loop for getting all turned on buttons 
+  for (var i = 0; i < puzzle.length; i++) {
+    for (var j = 0; j < puzzle.length; j++) {
+      var block = document.getElementById(String(i+1) + String(j+1));
+      if (block.getAttribute("class") == "off") answer[i][j] = false;
+      if (block.getAttribute("class") == "on" && puzzle[i][j] == true) {
+        answer[i][j] = true;
+      }
+    }
+  }
+  console.log(answer);
+  console.log(puzzle);
+  if (JSON.stringify(answer) === JSON.stringify(puzzle)) return true;
+  else return false;
 }
 
 // button color change for selection
 function buttonClick(id) {
   var button = document.getElementById(id);
  
+
   var state = button.getAttribute("class");
   
-  if (state == "off") {
+  // TODO: parse id so that we can run a check to see if the 
+  // button clicked really is a true in the answer key
+  // this will allow us to determine which color to make the
+  // button and whether or not to decrement the elements left
+  // on the field
+  if (state == "off" /*&& puzzle[i][j] == true*/) {
+    // elemCounter--;
     turnCounter++;
     button.style.backgroundColor = "green";
     button.setAttribute("class","on");
   }
+  // ***** uncomment once the ability to check puzzle is available here *****
+  // else if (state == "off" && puzzle[i][j] == false) {
+  //   turnCounter++;
+  //   button.style.color = "red";
+  //   button.innerText = "X";
+  //   button.setAttribute("class", "on");
+  // }
+
+
   
+  updateElements();
   updateTurns();
   
-  // var won = checkPuzzle(table);
-  // console.log(won);
+  var won = checkPuzzle();
+  if (won == true) {
+    
+  }
 }
 
 function delete_table() {
@@ -228,24 +266,22 @@ function delete_table() {
 }
 
 function updateTurns() {
-  var turns = document.getElementById("turnCount");
   turns.innerText = turnCounter;
 }
 
 function updateElements() {
-  var elems = document.getElementById("elemCount");
   elems.innerText = elemCounter;
 }
 
-  function timer() {
-    currentTime = new Date();
-    timeDiff = currentTime - startTime;
-    clock = document.getElementById("time");
-    minutes = (Math.round(timeDiff/(1000*60))%60);
-    seconds = (Math.round(timeDiff/1000)%60);
-    if (seconds < 10) clock.innerHTML = String(minutes) + ":0" + String(seconds);
-    else if (seconds >= 10) clock.innerHTML = String(minutes) + ":" + String(seconds);
-  }
+function timer() {
+  currentTime = new Date();
+  timeDiff = currentTime - startTime;
+  clock = document.getElementById("time");
+  minutes = Math.trunc(timeDiff/(1000*60))%60;
+  seconds = Math.round(timeDiff/1000)%60;
+  if (seconds < 10) clock.innerHTML = String(minutes) + ":0" + String(seconds);
+  else if (seconds >= 10) clock.innerHTML = String(minutes) + ":" + String(seconds);
+}
 
 // testing hint creation
 function printTopArrays(array){
