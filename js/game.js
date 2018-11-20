@@ -2,7 +2,13 @@
 // global variables
 var turnCounter = 0;
 var elemCounter = 0;
-var timer = 0;
+var startTime;
+var currentTime;
+var timeDiff;
+var clock = document.getElementById("time");;
+var minutes = 0;
+var seconds = 0;
+
 
 // initializes the page to a new game
 function start() {
@@ -13,7 +19,6 @@ function start() {
 
   // builds a new table based on the value of the selector field
   generate_table();
-
 }
 
 // generate a new puzzle
@@ -89,8 +94,10 @@ function generate_table() {
 
   printTopArrays(topHints);
   printSideArrays(sideHints);
+  
+  startTime = new Date();
 
-  timer = 0;
+  var time = setInterval(timer, 1000);
   turnCounter = 0;
 }
 
@@ -230,9 +237,15 @@ function updateElements() {
   elems.innerText = elemCounter;
 }
 
-function updateTimer() {
-  
-}
+  function timer() {
+    currentTime = new Date();
+    timeDiff = currentTime - startTime;
+    clock = document.getElementById("time");
+    minutes = (Math.round(timeDiff/(1000*60))%60);
+    seconds = (Math.round(timeDiff/1000)%60);
+    if (seconds < 10) clock.innerHTML = String(minutes) + ":0" + String(seconds);
+    else if (seconds >= 10) clock.innerHTML = String(minutes) + ":" + String(seconds);
+  }
 
 // testing hint creation
 function printTopArrays(array){
