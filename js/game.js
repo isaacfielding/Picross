@@ -14,6 +14,7 @@ var puzzle = [];
 var answer = [];
 var topHints = [];
 var sideHint = [];
+var time;
 
 
 // initializes the page to a new game
@@ -21,6 +22,10 @@ function start() {
   // deletes a table if there is already one
   if (document.getElementById("ptable") != null){
     delete_table();
+  }
+
+  if (document.getElementsByTagName("h1")[1] != null){
+    delete_msg();
   }
 
   // builds a new table based on the value of the selector field
@@ -69,14 +74,14 @@ function generate_table() {
       else if (i == 0 && j !== 0) {
         var cell = document.createElement("td");
         cell.setAttribute("id", "column " + String(j) + " hint");
-        cell.setAttribute("style", "background-color: gray; width: 40px; height: 40px;")
+        cell.setAttribute("style", "background-color: #2F2F2F; width: 40px;")
         cell.innerText = "0";
         row.appendChild(cell);
       } 
       else if (i !== 0 && j == 0) {
         var cell = document.createElement("td");
         cell.setAttribute("id", "row " + String(i) + " hint");
-        cell.setAttribute("style", "background-color: gray; width: 40px; height: 40px;")
+        cell.setAttribute("style", "background-color: #2F2F2F; height: 40px;")
         cell.innerText = "0";
         row.appendChild(cell);
       } 
@@ -103,8 +108,13 @@ function generate_table() {
   
   startTime = new Date();
 
-  var time = setInterval(timer, 1000);
+  time = setInterval(timer, 1000);
   turnCounter = 0;
+}
+
+function stopTime(){
+  // console.log("Im Stopping");
+  clearInterval(time);
 }
 
 // creates a random 2d array of puzzle
@@ -197,8 +207,6 @@ function makeSideHints(puzzle) {
 
 // check the values of the entire table against the answer key
 function checkPuzzle() {
- 
-  console.log("checkPuzzle debugging --------");
 
   // creates a 2d array
   for (var i = 0; i < puzzle.length; i++) {
@@ -226,8 +234,6 @@ function checkPuzzle() {
 // button color change for selection
 function buttonClick(id) {
   var button = document.getElementById(id);
- 
-
   var state = button.getAttribute("class");
   
   // TODO: parse id so that we can run a check to see if the 
@@ -248,21 +254,27 @@ function buttonClick(id) {
   //   button.innerText = "X";
   //   button.setAttribute("class", "on");
   // }
-
-
   
   updateElements();
   updateTurns();
   
   var won = checkPuzzle();
   if (won == true) {
-    
+    stopTime();
+    var congrats = document.createElement("h1");
+    congrats.innerText = "Congratulations! You Won!"
+    document.getElementById("picross").appendChild(congrats);
   }
 }
 
 function delete_table() {
   var table = document.getElementById("ptable");
   table.parentNode.removeChild(table);
+}
+
+function delete_msg() {
+  var msg = document.getElementsByTagName("h1")[1];
+  msg.parentNode.removeChild(msg);
 }
 
 function updateTurns() {
