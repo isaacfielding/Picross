@@ -30,7 +30,17 @@
 
 div.button{
 	text-align: center;
-	padding-top: 10px;
+	/* padding-top: 10px; */
+}
+
+#gui {
+  width: 35%;
+  margin: auto;
+}
+
+#gui ul{
+  text-align: center;
+  display: inline-block;
 }
 
 /* end form styling */
@@ -60,6 +70,7 @@ h2 {
 section h2 {
   text-align: center;
 }
+
 h3 {
   text-align: center;
   color: gray;
@@ -73,21 +84,27 @@ article p {
 
 /* Picross Table Styling */
 
-#picross {
+#picross{
+  width: 50%;
   margin: auto;
-  padding-top: 5%;
-  padding-bottom: 5%;
 }
 
-#picross table tr button {
-  border-color: #111;
+#picross table tr{
   width: 40px;
   height: 40px;
-  margin: 10;
 }
 
-#picross table tr button:hover {
+
+#picross table tr td {
+  border-color: #111;
   background-color: white;
+  width: 40px;
+  height: 40px;
+  text-align: center;
+}
+
+#picross table tr td:hover {
+  background-color: gray;
 }
 
 /* End Picross Table Styling */
