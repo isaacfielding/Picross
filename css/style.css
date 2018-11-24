@@ -96,6 +96,7 @@ article p {
 
 
 #picross table tr td {
+  color: white;
   border-color: #111;
   background-color: white;
   width: 40px;
@@ -157,3 +158,10 @@ a.menu-right:hover {
 }
 
 /* end Nav bar styling */
+
+canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: -1;
+}

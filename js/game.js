@@ -67,21 +67,21 @@ function generate_table() {
       if (i == 0 && j == 0){
         var cell = document.createElement("td");
         cell.setAttribute("id", "column " + String(j) + " hint");
-        cell.setAttribute("style", "background-color: #2F2F2F; width: 40px; height: 40px;")
+        cell.setAttribute("style", "background-color: transparent; width: 40px; height: 40px;")
         // cell.innerText = "0";
         row.appendChild(cell);
       }
       else if (i == 0 && j !== 0) {
         var cell = document.createElement("td");
         cell.setAttribute("id", "column " + String(j) + " hint");
-        cell.setAttribute("style", "background-color: #2F2F2F; width: 40px;")
+        cell.setAttribute("style", "background-color: transparent; width: 40px;")
         cell.innerText = "0";
         row.appendChild(cell);
       } 
       else if (i !== 0 && j == 0) {
         var cell = document.createElement("td");
         cell.setAttribute("id", "row " + String(i) + " hint");
-        cell.setAttribute("style", "background-color: #2F2F2F; height: 40px;")
+        cell.setAttribute("style", "background-color: transparent; height: 40px;")
         cell.innerText = "0";
         row.appendChild(cell);
       } 
@@ -154,18 +154,18 @@ function makeTopHints(puzzle) {
   
   // counter for keeping track of the number of trues in a row.
   var counter = 0;
-  
+  var hints = "";
   for (var j = 0; j < puzzle.length; j++) {
 		for (var i = 0; i < puzzle.length; i++) {
 			if (puzzle[i][j] == true) {
         counter++;
       }
       if (puzzle[i][j] == false){
-        if (counter !== 0) topHints[j].push(String(counter) + "\n");
+        if (counter !== 0) topHints[j] = topHints[j] + (String(counter) + "\n");
         counter = 0;
       }
     }
-    if (counter !== 0) topHints[j].push(String(counter) + "\n");
+    if (counter !== 0) topHints[j] = topHints[j] + (String(counter) + "\n")
     counter = 0;
   }
 
@@ -193,11 +193,11 @@ function makeSideHints(puzzle) {
         counter++;
       }
       else {
-        if (counter !== 0) sideHints[i].push(" " + String(counter));
+        if (counter !== 0) sideHints[i] = sideHints[i] + (" " + String(counter));
         counter = 0;
       }
     }
-    if (counter !== 0) sideHints[i].push(" " + String(counter));
+    if (counter !== 0) sideHints[i] = sideHints[i] + (" " + String(counter));
     counter = 0;
   }
 
