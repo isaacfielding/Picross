@@ -1,0 +1,46 @@
+Set Up
+
+
+DROP DATABASE Picross;
+CREATE DATABASE Picross;
+
+CREATE TABLE Players (
+id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY, 
+username VARCHAR(30) NOT NULL, 
+password VARCHAR(30) NOT NULL,
+reg_date TIMESTAMP
+);
+
+Create Table Games (
+id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY, 
+player VARCHAR(30) NOT NULL, 
+board VARCHAR(30) NOT NULL,
+boardsize VARCHAR(30) NOT NULL,
+time VARCHAR(30) NOT NULL,
+reg_date TIMESTAMP
+);
+
+Create Table Levels (
+id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY, 
+player VARCHAR(30) NOT NULL, 
+board VARCHAR(30) NOT NULL,
+boardsize VARCHAR(30) NOT NULL,
+time VARCHAR(30) NOT NULL,
+reg_date TIMESTAMP
+);
+
+INSERT INTO Players (username, password) VALUES ('isaacfielding1', 'password1');
+
+INSERT INTO Players (username, password) VALUES ('mmello317', 'password2');
+
+INSERT INTO Games (player, board, time) VALUES ('isaacfielding1', 'nike', '3x3', '0:33');
+
+INSERT INTO Games (player, board, time) VALUES ('isaacfielding1', '2213', '7x7', '1:45');
+
+
+
+
+
+Clean Up
+
+DROP DATABASE Picross;
