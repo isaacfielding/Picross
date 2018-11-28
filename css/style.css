@@ -63,6 +63,11 @@ h1 {
   color: gray;
 }
 
+div.button h3 {
+  display: inline-block;
+  color: gray;
+}
+
 h2 {
   color: gray;
 }
@@ -73,6 +78,10 @@ section h2 {
 
 h3 {
   text-align: center;
+  color: gray;
+}
+
+p.button {
   color: gray;
 }
 

@@ -40,6 +40,25 @@
       <option value="1">Arcade Mode</option>
       <option value="2">Time Attack Mode</option>
     </select>
+
+    <h3 class="button">Grid</h3>
+    <select id="gridColorSetting">
+      <option value="White">Default</option>
+      <option value="Red">Red</option>
+      <option value="Green">Green</option>
+      <option value="Blue">Blue</option>
+    </select>
+
+    <h3 class="button">Hit</h3>
+    <select id="hitColorSetting">
+      <option value="White">Default</option>
+      <option value="Red">Red</option>
+      <option value="Green">Green</option>
+      <option value="Blue">Blue</option>
+    </select>
+  
+    <!-- Updates the colors of the grid and hits when clicked -->
+    <button type="button" id="colorButton" onclick="updateColors()">Change Color</button>
   </div>
 
   <!-- Display elements for game progress -->

@@ -14,6 +14,8 @@ var puzzle = [];
 var answer = [];
 var topHints = [];
 var sideHint = [];
+var hitColor = "green";
+var gridColor = "white";
 var time;
 
 
@@ -40,12 +42,12 @@ function generate_table() {
   elemCounter = 0;
   // generate key for puzzle
   puzzle = creatRandomPuzzle(height);
-  console.log(puzzle);
+  // console.log(puzzle);
 
   topHints = makeTopHints(puzzle);
-  console.log(topHints);
+  // console.log(topHints);
   sideHints = makeSideHints(puzzle);
-  console.log(sideHints);
+  // console.log(sideHints);
 
   var area = document.getElementById("picross");
   if(width == 8) area.setAttribute("style", "width: 50%");
@@ -90,6 +92,7 @@ function generate_table() {
         cell.setAttribute("id", String(i)+String(j));
         cell.setAttribute("class","off");
         cell.setAttribute("onclick","buttonClick(\""+String(i)+String(j)+"\")")
+        cell.setAttribute("style", "background-color: " + gridColor)
         row.appendChild(cell);
       }
     }
@@ -113,7 +116,7 @@ function generate_table() {
 }
 
 function stopTime(){
-  // console.log("Im Stopping");
+  console.log("Im Stopping");
   clearInterval(time);
 }
 
@@ -213,7 +216,7 @@ function checkPuzzle() {
     answer[i] = [];
   }
 
-  var grid = document.getElementById("ptable");
+  // var grid = document.getElementById("ptable");
   
   // for loop for getting all turned on buttons 
   for (var i = 0; i < puzzle.length; i++) {
@@ -225,8 +228,6 @@ function checkPuzzle() {
       }
     }
   }
-  console.log(answer);
-  console.log(puzzle);
   if (JSON.stringify(answer) === JSON.stringify(puzzle)) return true;
   else return false;
 }
@@ -244,7 +245,7 @@ function buttonClick(id) {
   if (state == "off" /*&& puzzle[i][j] == true*/) {
     // elemCounter--;
     turnCounter++;
-    button.style.backgroundColor = "green";
+    button.style.backgroundColor = hitColor;
     button.setAttribute("class","on");
   }
   // ***** uncomment once the ability to check puzzle is available here *****
@@ -295,7 +296,7 @@ function timer() {
   else if (seconds >= 10) clock.innerHTML = String(minutes) + ":" + String(seconds);
 }
 
-// testing hint creation
+// Print top hints
 function printTopArrays(array){
   for (var j = 0; j < array.length; j++){
     var column = document.getElementById("column " + String(j + 1) + " hint");
@@ -305,12 +306,38 @@ function printTopArrays(array){
   }
 }
 
-// testing hint creation
+// Print side hints
 function printSideArrays(array){
   for (var j = 0; j < array.length; j++) {
     var row = document.getElementById("row " + String(j + 1) + " hint");
     for (var i = 0; i <= array[j].length; i++) {
       row.innerText = array[j];
+    }
+  }
+}
+
+
+
+function updateColors(){
+  var cells = new Array(Number(document.getElementById("size").value) + 1)
+
+  console.log(cells);
+  
+  var gridColorButton = document.getElementById("gridColorSetting").value;
+  gridColor = gridColorButton;
+  var hitColorButton = document.getElementById("hitColorSetting").value;
+  hitColor = hitColorButton;
+
+  for (var i = 0; i < cells.length; i++){
+    for (var j = 0; j < cells.length; j++){
+      if (i !== 0 && j !== 0) {
+        cell = document.getElementById(String(i) + String(j));
+        if (cell.className === "on"){
+          cell.setAttribute("style", "background-color: " + hitColor);
+        }
+        if (cell.className === "off")
+          cell.setAttribute("style", "background-color: " + gridColor);
+      }
     }
   }
 }
