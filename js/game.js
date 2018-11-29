@@ -14,10 +14,11 @@ var puzzle = [];
 var answer = [];
 var topHints = [];
 var sideHint = [];
-var hitColor = "green";
+var hitColor = "black";
 var gridColor = "white";
 var time;
-
+var startingElems = 0;
+var won = false;
 
 // initializes the page to a new game
 function start() {
@@ -40,22 +41,20 @@ function generate_table() {
   var width = height;
 
   elemCounter = 0;
+
   // generate key for puzzle
   puzzle = creatRandomPuzzle(height);
-  // console.log(puzzle);
 
   topHints = makeTopHints(puzzle);
-  // console.log(topHints);
+
   sideHints = makeSideHints(puzzle);
-  // console.log(sideHints);
+
 
   var area = document.getElementById("picross");
-  if(width == 8) area.setAttribute("style", "width: 50%");
-  if (width == 14) area.setAttribute("style", "width: 50%");
+  area.setAttribute("style", "width: 50%");
 
   // creates a <table> element and a <tbody> element
   var tbl = document.createElement("table");
-
 
   // creating all cells
   for (var i = 0; i < height; i++) {
@@ -68,9 +67,7 @@ function generate_table() {
       // the end of the table row
       if (i == 0 && j == 0){
         var cell = document.createElement("td");
-        cell.setAttribute("id", "column " + String(j) + " hint");
         cell.setAttribute("style", "background-color: transparent; width: 40px; height: 40px;")
-        // cell.innerText = "0";
         row.appendChild(cell);
       }
       else if (i == 0 && j !== 0) {
@@ -83,15 +80,15 @@ function generate_table() {
       else if (i !== 0 && j == 0) {
         var cell = document.createElement("td");
         cell.setAttribute("id", "row " + String(i) + " hint");
-        cell.setAttribute("style", "background-color: transparent; height: 40px;")
+        cell.setAttribute("style", "background-color: transparent; height: 40px; width: 80px")
         cell.innerText = "0";
         row.appendChild(cell);
       } 
       else if (i !== 0 && j !== 0){
         var cell = document.createElement("td");
-        cell.setAttribute("id", String(i)+String(j));
+        cell.setAttribute("id", String(i) + " " + String(j));
         cell.setAttribute("class","off");
-        cell.setAttribute("onclick","buttonClick(\""+String(i)+String(j)+"\")")
+        cell.setAttribute("onclick", "buttonClick(\"" + String(i) + " " + String(j)+"\")")
         cell.setAttribute("style", "background-color: " + gridColor)
         row.appendChild(cell);
       }
@@ -113,10 +110,13 @@ function generate_table() {
 
   time = setInterval(timer, 1000);
   turnCounter = 0;
+  updateTurns();
+  won = false;
+
+  centerTable();
 }
 
 function stopTime(){
-  console.log("Im Stopping");
   clearInterval(time);
 }
 
@@ -140,6 +140,8 @@ function creatRandomPuzzle(size){
     }
     updateElements();
   }
+
+  startingElems = elemCounter;
 
   // returns a 2d array (answer key)
   return puzzle;
@@ -208,63 +210,44 @@ function makeSideHints(puzzle) {
   return sideHints;
 }
 
-// check the values of the entire table against the answer key
-function checkPuzzle() {
-
-  // creates a 2d array
-  for (var i = 0; i < puzzle.length; i++) {
-    answer[i] = [];
-  }
-
-  // var grid = document.getElementById("ptable");
-  
-  // for loop for getting all turned on buttons 
-  for (var i = 0; i < puzzle.length; i++) {
-    for (var j = 0; j < puzzle.length; j++) {
-      var block = document.getElementById(String(i+1) + String(j+1));
-      if (block.getAttribute("class") == "off") answer[i][j] = false;
-      if (block.getAttribute("class") == "on" && puzzle[i][j] == true) {
-        answer[i][j] = true;
-      }
-    }
-  }
-  if (JSON.stringify(answer) === JSON.stringify(puzzle)) return true;
-  else return false;
-}
-
 // button color change for selection
 function buttonClick(id) {
+  if (won == true) return;
   var button = document.getElementById(id);
   var state = button.getAttribute("class");
   
-  // TODO: parse id so that we can run a check to see if the 
-  // button clicked really is a true in the answer key
-  // this will allow us to determine which color to make the
-  // button and whether or not to decrement the elements left
-  // on the field
-  if (state == "off" /*&& puzzle[i][j] == true*/) {
-    // elemCounter--;
+  var idArr = id.split(" ");
+  var i = idArr[0];
+  var j = idArr[1];
+    
+  if (state == "off" && puzzle[i-1][j-1] == true) {
+    elemCounter--;
     turnCounter++;
     button.style.backgroundColor = hitColor;
     button.setAttribute("class","on");
   }
-  // ***** uncomment once the ability to check puzzle is available here *****
-  // else if (state == "off" && puzzle[i][j] == false) {
-  //   turnCounter++;
-  //   button.style.color = "red";
-  //   button.innerText = "X";
-  //   button.setAttribute("class", "on");
-  // }
+  else if (state == "off" && puzzle[i-1][j-1] == false) {
+    turnCounter++;
+    button.style.backgroundColor = "white";
+    button.style.color = "red";
+    button.innerText = "X";
+    button.setAttribute("class", "on");
+  }
   
   updateElements();
   updateTurns();
   
-  var won = checkPuzzle();
-  if (won == true) {
+  if (elemCounter == 0) {
+    won = true;
     stopTime();
     var congrats = document.createElement("h1");
+    var errors = document.createElement("h1");
+    congrats.setAttribute("id", "congrats");
+    errors.setAttribute("id", "errors");
     congrats.innerText = "Congratulations! You Won!"
+    errors.innerText = "Errors: " + String(turnCounter - startingElems);
     document.getElementById("picross").appendChild(congrats);
+    document.getElementById("picross").appendChild(errors);
   }
 }
 
@@ -274,8 +257,10 @@ function delete_table() {
 }
 
 function delete_msg() {
-  var msg = document.getElementsByTagName("h1")[1];
-  msg.parentNode.removeChild(msg);
+  var game = document.getElementById("picross");
+  
+  game.removeChild(document.getElementById("congrats"));
+  game.removeChild(document.getElementById("errors"));
 }
 
 function updateTurns() {
@@ -316,12 +301,8 @@ function printSideArrays(array){
   }
 }
 
-
-
 function updateColors(){
   var cells = new Array(Number(document.getElementById("size").value) + 1)
-
-  console.log(cells);
   
   var gridColorButton = document.getElementById("gridColorSetting").value;
   gridColor = gridColorButton;
@@ -331,13 +312,27 @@ function updateColors(){
   for (var i = 0; i < cells.length; i++){
     for (var j = 0; j < cells.length; j++){
       if (i !== 0 && j !== 0) {
-        cell = document.getElementById(String(i) + String(j));
-        if (cell.className === "on"){
+        cell = document.getElementById(String(i) + " " +String(j));
+        if (cell.className == "on"){
           cell.setAttribute("style", "background-color: " + hitColor);
         }
-        if (cell.className === "off")
+        if (cell.className == "off")
           cell.setAttribute("style", "background-color: " + gridColor);
       }
     }
   }
+}
+
+function centerGUI(){
+  var gui = document.getElementsByTagName("ul");
+  var width = 0;
+  for (var i = 0; i < gui.length; i++){
+    width += Number(gui[i].clientWidth);
+  }
+  document.getElementById("gui").setAttribute("style","width: " + String(width + 2) + "px");
+}
+
+function centerTable(){
+  var table = document.getElementById("ptable");
+  document.getElementById("picross").setAttribute("style", "width: " + String(table.clientWidth + 2) + "px");
 }

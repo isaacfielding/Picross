@@ -130,8 +130,6 @@ function Particle(x, y, radius, color) {
           if (this === particles[i]) continue;
           if (distance(this.x, this.y, particles[i].x, particles[i].y) - this.radius * 2 < 0){
             resolveCollision(this, particles[i]);
-            // this.radius -= this.radius/2;
-            // if(this.radius < 10) delete Object;
           }
         }
 
@@ -193,23 +191,12 @@ function Mountain(base, height, xOffset, color){
 
 // Implementation
 let particles;
-let mountains;
 
 function init() {
       particles = [];
-      mountains = [];
-
-      for (let i = 1; i <= 3; i++){
-        var base = 400;
-        var height = base - base * 4/7;
-        var xOffset = (base/2) * i - base/3;
-        // ['#494f66', '#3c404f', '#272930', '#242535', '#202133']
-        var color = '#202133'
-        mountains.push(new Mountain(base, height, xOffset, color));
-      }
 
       for (let i = 0; i <= 200; i++){
-        const radius = 15;
+        let radius = randomIntFromRange(15,35);
         let x = randomIntFromRange(radius, canvas.width - radius);
         let y = randomIntFromRange(radius, canvas.height - radius);
         const color = randomColor(colors);
@@ -233,10 +220,6 @@ function init() {
 function animate() {
     requestAnimationFrame(animate)
     c.clearRect(0, 0, canvas.width, canvas.height)
-
-    // mountains.forEach(mountain => {
-    //   mountain.draw();
-    // })
 
     particles.forEach(particle => {
         particle.update(particles);

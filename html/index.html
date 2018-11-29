@@ -14,11 +14,18 @@
   <canvas></canvas>
 
   <div class="button">
-    <button type="button" onclick="location.href='menu.html'">Menu</button>
+      <form id="myform">
+          Username:
+          <input type="text" name="username" placeholder="My name is jeff"><br><br>
+          Password:
+          <input type="text" name="password" placeholder="My password is jeff">
+        </form>
+
+        <button type="button" onclick="location.href='menu.html'">Login</button>
+        <button type="button" onclick="newUser()">New User</button>
   </div>
-  <div class="button">
-    <button type="button" onclick="location.href='authors.html'">Authors</button>
-  </div>
+  
 </body>
-<script src="../js/canvas.js" charset="utf-8"></script>
+<!-- <script src="../js/canvas.js" charset="utf-8"></script> -->
+<script src="../js/form.js" charset="utf-8"></script>
 </html>
