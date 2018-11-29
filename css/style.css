@@ -41,6 +41,8 @@ div.button{
 #gui ul{
   text-align: center;
   display: inline-block;
+  padding-left: 1%;
+  padding-right: 1%;
 }
 
 /* end form styling */
@@ -118,55 +120,6 @@ article p {
 }
 
 /* End Picross Table Styling */
-
-/* Nav bar styling */
-ul.menu {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-  overflow: hidden;
-}
-
-li {
-	color: white;
-}
-
-li.menu {
-	padding-top: 10px;
-}
-
-li.menu-left {
-  float: left;
-  border-right: 1px solid #bbb;
-}
-
-li.menu-right {
-	float: right;
-  border-left: 1px solid #bbb;
-}
-
-li a {
-    display: block;
-    color: white;
-    text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
-}
-
-a.inactive:hover {
-  background-color: #111;
-}
-
-a.menu-right:hover {
-  background-color: #111;
-}
-
-.active {
-    background-color: gray;
-    color: black;
-}
-
-/* end Nav bar styling */
 
 canvas {
   position: fixed;
