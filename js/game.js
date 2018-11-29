@@ -56,7 +56,6 @@ function generate_table() {
   // creates a <table> element and a <tbody> element
   var tbl = document.createElement("table");
 
-
   // creating all cells
   for (var i = 0; i < height; i++) {
     
@@ -68,9 +67,7 @@ function generate_table() {
       // the end of the table row
       if (i == 0 && j == 0){
         var cell = document.createElement("td");
-        cell.setAttribute("id", "column " + String(j) + " hint");
         cell.setAttribute("style", "background-color: transparent; width: 40px; height: 40px;")
-        // cell.innerText = "0";
         row.appendChild(cell);
       }
       else if (i == 0 && j !== 0) {
@@ -89,9 +86,9 @@ function generate_table() {
       } 
       else if (i !== 0 && j !== 0){
         var cell = document.createElement("td");
-        cell.setAttribute("id", String(i)+String(j));
+        cell.setAttribute("id", String(i) + " " + String(j));
         cell.setAttribute("class","off");
-        cell.setAttribute("onclick","buttonClick(\""+String(i)+String(j)+"\")")
+        cell.setAttribute("onclick", "buttonClick(\"" + String(i) + " " + String(j)+"\")")
         cell.setAttribute("style", "background-color: " + gridColor)
         row.appendChild(cell);
       }
@@ -208,59 +205,63 @@ function makeSideHints(puzzle) {
   return sideHints;
 }
 
-// check the values of the entire table against the answer key
-function checkPuzzle() {
+// // check the values of the entire table against the answer key
+// function checkPuzzle() {
 
-  // creates a 2d array
-  for (var i = 0; i < puzzle.length; i++) {
-    answer[i] = [];
-  }
+//   // creates a 2d array
+//   for (var i = 0; i < puzzle.length; i++) {
+//     answer[i] = [];
+//   }
 
-  // var grid = document.getElementById("ptable");
+//   // var grid = document.getElementById("ptable");
   
-  // for loop for getting all turned on buttons 
-  for (var i = 0; i < puzzle.length; i++) {
-    for (var j = 0; j < puzzle.length; j++) {
-      var block = document.getElementById(String(i+1) + String(j+1));
-      if (block.getAttribute("class") == "off") answer[i][j] = false;
-      if (block.getAttribute("class") == "on" && puzzle[i][j] == true) {
-        answer[i][j] = true;
-      }
-    }
-  }
-  if (JSON.stringify(answer) === JSON.stringify(puzzle)) return true;
-  else return false;
-}
+//   // for loop for getting all turned on buttons 
+//   for (var i = 0; i < puzzle.length; i++) {
+//     for (var j = 0; j < puzzle.length; j++) {
+//       var block = document.getElementById(String(i+1) + " " + String(j+1));
+      
+//       if (block.getAttribute("class") == "off") answer[i][j] = false;
+//       if (block.getAttribute("class") == "on" && puzzle[i][j] == true) {
+//         answer[i][j] = true;
+//       }
+//     }
+//   }
+//   if (JSON.stringify(answer) === JSON.stringify(puzzle)) return true;
+//   else return false;
+// }
 
 // button color change for selection
 function buttonClick(id) {
   var button = document.getElementById(id);
   var state = button.getAttribute("class");
   
+  var idArr = id.split(" ");
+  var i = idArr[0];
+  var j = idArr[1];
+    
   // TODO: parse id so that we can run a check to see if the 
   // button clicked really is a true in the answer key
   // this will allow us to determine which color to make the
   // button and whether or not to decrement the elements left
   // on the field
-  if (state == "off" /*&& puzzle[i][j] == true*/) {
-    // elemCounter--;
+  if (state == "off" && puzzle[i-1][j-1] == true) {
+    elemCounter--;
     turnCounter++;
     button.style.backgroundColor = hitColor;
     button.setAttribute("class","on");
   }
   // ***** uncomment once the ability to check puzzle is available here *****
-  // else if (state == "off" && puzzle[i][j] == false) {
-  //   turnCounter++;
-  //   button.style.color = "red";
-  //   button.innerText = "X";
-  //   button.setAttribute("class", "on");
-  // }
+  else if (state == "off" && puzzle[i-1][j-1] == false) {
+    turnCounter++;
+    button.style.color = "red";
+    button.innerText = "X";
+    button.setAttribute("class", "on");
+  }
   
   updateElements();
   updateTurns();
   
-  var won = checkPuzzle();
-  if (won == true) {
+  if (elemCounter == 0) {
     stopTime();
     var congrats = document.createElement("h1");
     congrats.innerText = "Congratulations! You Won!"
@@ -315,8 +316,6 @@ function printSideArrays(array){
     }
   }
 }
-
-
 
 function updateColors(){
   var cells = new Array(Number(document.getElementById("size").value) + 1)
