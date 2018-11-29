@@ -26,6 +26,24 @@ function newUser(){
     form.removeChild(document.getElementsByName("password")[0])
     form.innerText = "";
 
-    form.innerText = "First Name: "
-    form.appendChild(fnField);
+    form.append("First Name: ", fnField);
+    form.append(document.createElement("br"));
+    form.append(document.createElement("br"));
+    form.append("Last Name: ", lnField);
+    form.append(document.createElement("br"));
+    form.append(document.createElement("br"));
+    form.append("Age: ", ageField);
+    form.append(document.createElement("br"));
+    form.append(document.createElement("br"));
+    form.append("Gender: ", genderField);
+    form.append(document.createElement("br"));
+    form.append(document.createElement("br"));
+    form.append("Location: ", locationField);
+    form.append(document.createElement("br"));
+
+    changeButtons();
+}
+
+function changeButtons(){
+    
 }
