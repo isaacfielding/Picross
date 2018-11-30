@@ -1,3 +1,18 @@
+<?php
+
+$dbServername = "localhost";
+$dbUsername = "root";
+$dbPassword = "";
+$dbName = "Picross";
+
+$conn = mysqli_connect(dbServername, dbUsername, dbPassword, dbName);
+
+if ($conn->connect_error) {
+  die("Connection failed: " . $conn->connect_error ."<br>");
+}
+echo "Connected successfully <br>";
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,18 +28,43 @@
   <!-- our canvas element for which we will use to draw animations in the background of our webpage -->
   <canvas></canvas>
 
+
+
+
+
   <div class="button">
-      <form id="myform">
+      <form id="myform" method = "POST" action = "">
           Username:
+
           <input type="text" name="username" placeholder="My name is jeff"><br><br>
           Password:
-          <input type="text" name="password" placeholder="My password is jeff">
+
+          <input type="text" name="password" placeholder="My password is jeff"><br><br>
+
+          <input type="submit" name= "submit" value="Submit" />
+
         </form>
 
         <button id="b1" type="button" onclick="location.href='menu.html'">Login</button>
         <button id="b2" type="button" onclick="newUser()">New User</button>
   </div>
   
+  <?php
+
+  
+  $sql = "SELECT * FROM Players;";
+  $result = mysqli_query($conn, $sql);
+  $resultCheck = mysqli_num_rows($result);
+
+  if($resultCheck > 0 ) {
+    while ($row = mysqli_fetch_assoc($result)){
+      echo $row['user_uid'];
+    }
+  }
+
+?>
+
+
 </body>
 <script src="../js/canvas.js" charset="utf-8"></script>
 <script src="../js/form.js" charset="utf-8"></script>
