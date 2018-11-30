@@ -1,7 +1,7 @@
 
 // global variables
 var turnCounter = 0;
-// var turns = document.getElementById("turnCount");
+var turns = document.getElementById("turnCount");
 var elemCounter = 0;
 var elems = document.getElementById("elemCount");
 var startTime;
@@ -11,7 +11,7 @@ var clock = document.getElementById("time");;
 var minutes = 0;
 var seconds = 0;
 var puzzle = [];
-// var answer = [];
+var answer = [];
 var topHints = [];
 var sideHint = [];
 var hitColor = "black";
@@ -72,7 +72,7 @@ function generate_table() {
       }
       else if (i == 0 && j !== 0) {
         var cell = document.createElement("td");
-        cell.setAttribute("id", "column " + " hint");
+        cell.setAttribute("id", "column " + String(j) + " hint");
         cell.setAttribute("style", "background-color: transparent; width: 40px;")
         cell.innerText = "0";
         row.appendChild(cell);
@@ -131,7 +131,7 @@ function creatRandomPuzzle(size){
   // initializes the array with booleans as a key for the puzzle
 	for (var i = 0; i < size - 1; i++) {
 		for (var j = 0; j < size - 1; j++) {
-			if (Math.random() >= 0.1) {
+			if (Math.random() >= 0.5) {
         puzzle[i][j] = true;
         elemCounter++;
 			} else {
@@ -159,7 +159,7 @@ function makeTopHints(puzzle) {
   
   // counter for keeping track of the number of trues in a row.
   var counter = 0;
-
+  var hints = "";
   for (var j = 0; j < puzzle.length; j++) {
 		for (var i = 0; i < puzzle.length; i++) {
 			if (puzzle[i][j] == true) {
@@ -221,8 +221,8 @@ function buttonClick(id) {
   var j = idArr[1];
     
   if (state == "off" && puzzle[i-1][j-1] == true) {
-    elemCounter-=2;
-    turnCounter+=2;
+    elemCounter--;
+    turnCounter++;
     button.style.backgroundColor = hitColor;
     button.setAttribute("class","on");
   }
@@ -234,7 +234,7 @@ function buttonClick(id) {
     button.setAttribute("class", "on");
   }
   
-  updateelements();
+  updateElements();
   updateTurns();
   
   if (elemCounter == 0) {
@@ -244,7 +244,7 @@ function buttonClick(id) {
     var errors = document.createElement("h1");
     congrats.setAttribute("id", "congrats");
     errors.setAttribute("id", "errors");
-    congrats.innertext = "Congratulations! You Won!"
+    congrats.innerText = "Congratulations! You Won!"
     errors.innerText = "Errors: " + String(turnCounter - startingElems);
     document.getElementById("picross").appendChild(congrats);
     document.getElementById("picross").appendChild(errors);
@@ -252,7 +252,7 @@ function buttonClick(id) {
 }
 
 function delete_table() {
-  var table = dowdcument.getElementById("ptable");
+  var table = document.getElementById("ptable");
   table.parentNode.removeChild(table);
 }
 
@@ -274,9 +274,9 @@ function updateElements() {
 function timer() {
   currentTime = new Date();
   timeDiff = currentTime - startTime;
-  clock = documewnt.getElementById("time");
+  clock = document.getElementById("time");
   minutes = Math.trunc(timeDiff/(1000*60))%60;
-  seconds = Math.round(timewDiff/1000)%60;
+  seconds = Math.round(timeDiff/1000)%60;
   if (seconds < 10) clock.innerHTML = String(minutes) + ":0" + String(seconds);
   else if (seconds >= 10) clock.innerHTML = String(minutes) + ":" + String(seconds);
 }
