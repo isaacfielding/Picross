@@ -19,6 +19,8 @@ var gridColor = "white";
 var time;
 var startingElems = 0;
 var won = false;
+var gameType = Number(document.getElementById("mode").value)
+var level = 0;
 
 // initializes the page to a new game
 function start() {
@@ -31,24 +33,29 @@ function start() {
     delete_msg();
   }
 
-  // builds a new table based on the value of the selector field
-  generate_table();
+  // builds a new table
+    generate_table();
+    
 }
 
 // generate a new puzzle
 function generate_table() {
   var height = Number(document.getElementById("size").value) + 1;
   var width = height;
-
+  gameType = Number(document.getElementById("mode").value);
   elemCounter = 0;
 
   // generate key for puzzle
-  puzzle = creatRandomPuzzle(height);
+  if (gameType == 0) {
+    puzzle = creatRandomPuzzle(height);
+  }
+  else if (gameType == 1 || gameType == 2) {
+    puzzle = createLevel(level);
+  }
 
   topHints = makeTopHints(puzzle);
 
   sideHints = makeSideHints(puzzle);
-
 
   var area = document.getElementById("picross");
   area.setAttribute("style", "width: 50%");
@@ -336,4 +343,46 @@ function centerGUI(){
 function centerTable(){
   var table = document.getElementById("ptable");
   document.getElementById("picross").setAttribute("style", "width: " + String(table.clientWidth + 2) + "px");
+}
+
+function createLevel(level){
+  var size = Number(document.getElementById("size").value);
+  if (level == 0){
+    puzzle = puzzle0(size);
+  }
+  else if (level == 1) {
+    puzzle = puzzle1(size);
+  }
+  // else if (level == 2) {
+  //   puzzle = puzzle2(size);
+  // }
+  // else if (level == 3) {
+  //   puzzle = puzzle3(size);
+  // }
+  // else if (level == 4) {
+  //   puzzle = puzzle4(size);
+  // }
+  // else if (level == 5) {
+  //   puzzle = puzzle5(size);
+  // }
+  return puzzle;
+}
+
+function puzzle0(size){
+  puzzle = [
+    [true, true, true, false, true, false, false, true, false, true, false, true, true],
+    [true, true, true, false, true, false, false, true, false, true, false, true, true],
+    [true, true, true, false, true, false, false, true, false, true, false, true, true],
+    [true, true, true, false, true, false, false, true, false, true, false, true, true],
+    [true, true, true, false, true, false, false, true, false, true, false, true, true],
+    [true, true, true, false, true, false, false, true, false, true, false, true, true],
+    [true, true, true, false, true, false, false, true, false, true, false, true, true],
+    [true, true, true, false, true, false, false, true, false, true, false, true, true], 
+    [true, true, true, false, true, false, false, true, false, true, false, true, true],
+    [true, true, true, false, true, false, false, true, false, true, false, true, true],
+    [true, true, true, false, true, false, false, true, false, true, false, true, true],
+    [true, true, true, false, true, false, false, true, false, true, false, true, true],
+    [true, true, true, false, true, false, false, true, false, true, false, true, true],
+  ]
+  return puzzle;
 }
