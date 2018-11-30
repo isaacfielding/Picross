@@ -25,10 +25,6 @@ function newUser(){
     locationField.setAttribute("type", "text");
     locationField.setAttribute("name", "location");
 
-    // form.removeChild(document.getElementsByName("username")[0])
-    // form.removeChild(document.getElementsByName("password")[0])
-    // form.innerText = "";
-
     form.append(document.createElement("br"));
     form.append(document.createElement("br"));
     form.append("First Name: ", fnField);
@@ -60,13 +56,22 @@ function loginButtons(){
 
 // checks for user in database
 function attemptLogin(){
-    // check if user is in the database
     
+    // check if user is in the database
+    var userPresent = true; // php check here?
+
     // if yes, send to menu
+    if (userPresent){
+        location.href = 'menu.html';
+    }
+    
 }
 
 // creates user in database
 function submit(){
+
+    // Do some PHP things here I think
+    // Then change the form back to login Format
 
     var unField = document.createElement("input");
     unField.setAttribute("type", "text");
@@ -90,8 +95,6 @@ function submit(){
     form.append(document.createElement("br"));
     form.append("Password: ", pwField);
 
-    // do some php shit here
-    
     loginButtons();
 }
 
