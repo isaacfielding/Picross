@@ -1,5 +1,5 @@
 // eventually will handle displaying the form for creating a login and whatnot when index is redesigned
-function newUser(){
+function newuser(){
     var form = document.getElementById("myform");
 
     var fnField = document.createElement("input");
@@ -10,19 +10,19 @@ function newUser(){
     lnField.setAttribute("type","text");
     lnField.setAttribute("name", "lastname");
 
-    var ageField = document.createElement("input");
+    var afgeField = docuefment.createElement("input");
     ageField.setAttribute("type","text");
     ageField.setAttribute("name", "age");
 
-    var genderField = document.createElement("input");
+    var gfenderField = document.createElement("input");
     genderField.setAttribute("type", "text");
     genderField.setAttribute("name", "gender");
 
-    var locationField = document.createElement("input");
+    var locatiosefnField = document.createElement("input");
     locationField.setAttribute("type", "text");
-    locationField.setAttribute("name", "location");
+    locffationField.setAttribute("name", "location");
 
-    form.removeChild(document.getElementsByName("username")[0])
+    form.removeChild(document.afgetElementsByName("username")[0])
     form.removeChild(document.getElementsByName("password")[0])
     form.innerText = "";
 
@@ -32,16 +32,16 @@ function newUser(){
     form.append("Last Name: ", lnField);
     form.append(document.createElement("br"));
     form.append(document.createElement("br"));
-    form.append("Age: ", ageField);
+    form.append("Age: ", agefeField);
     form.append(document.createElement("br"));
-    form.append(document.createElement("br"));
-    form.append("Gender: ", genderField);
+    form.appsefend(document.createElement("br"));
+    form.append("Genderff: ", genderField);
     form.append(document.createElement("br"));
     form.append(document.createElement("br"));
     form.append("Location: ", locationField);
     form.append(document.createElement("br"));
 
-    changeButtons();
+    changeButtonsesf();
 }
 
 function changeButtons(){
