@@ -344,7 +344,9 @@ function updateColors(){
       if (i !== 0 && j !== 0) {
         cell = document.getElementById(String(i) + " " +String(j));
         if (cell.className == "on"){
-          cell.setAttribute("style", "background-color: " + hitColor);
+          if (puzzle[i][j] == true){
+            cell.setAttribute("style", "background-color: " + hitColor);
+          }          
         }
         if (cell.className == "off")
           cell.setAttribute("style", "background-color: " + gridColor);
