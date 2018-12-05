@@ -25,21 +25,31 @@ function newUser(){
     locationField.setAttribute("type", "text");
     locationField.setAttribute("name", "location");
 
+    // form.append(document.createElement("br"));
+    // form.append(document.createElement("br"));
+    form.append("First Name: ");
+    form.append(document.createElement("br"));
+    form.append(fnField);
     form.append(document.createElement("br"));
     form.append(document.createElement("br"));
-    form.append("First Name: ", fnField);
+    form.append("Last Name: ");
+    form.append(document.createElement("br"));
+    form.append(lnField);
     form.append(document.createElement("br"));
     form.append(document.createElement("br"));
-    form.append("Last Name: ", lnField);
+    form.append("Age: ");
+    form.append(document.createElement("br"));
+    form.append(ageField);
     form.append(document.createElement("br"));
     form.append(document.createElement("br"));
-    form.append("Age: ", ageField);
+    form.append("Gender: ")
+    form.append(document.createElement("br"));
+    form.append(genderField);
     form.append(document.createElement("br"));
     form.append(document.createElement("br"));
-    form.append("Gender: ", genderField);
+    form.append("Location: ");
     form.append(document.createElement("br"));
-    form.append(document.createElement("br"));
-    form.append("Location: ", locationField);
+    form.append(locationField);
     form.append(document.createElement("br"));
 
     newUserButtons();
@@ -97,6 +107,7 @@ function submit(){
 
     loginButtons();
 }
+
 
 
 function newUserButtons(){

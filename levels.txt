@@ -1,0 +1,65 @@
+{ "name" : "7_1",
+"grid":[
+[true, true, true, false, true, false, false],
+[true, true, false, true, false, true, false],
+[false, false, true, false, false, false, false],
+[true, false, true, false, true, true, false],
+[false, true, false, false, false, false, false],
+[true, true, true, true, true, false, true],
+[true, false, false, false, true, true, true],
+],
+"elems" : 24,
+"startingElements" : 24
+}
+
+{ "name" : "7_2",
+"grid":[
+[true, true, false, false, false, false, true],
+[true, false, true, true, true, false, false],
+[false, true, true, false, true, false, true],
+[true, false, true, true, false, true, false],
+[true, false, false, true, false, true, false],
+[false, true, true, false, true, false, false],
+[true, false, true, false, true, false, true],
+],
+"elems" : 25,
+"startingElements" : 25
+}
+
+{ "name" : "13_1",
+"grid":[true, false, true, false, true, false, false, true, false, true, true, true, true],
+[true, false, false, false, false, false, false, true, false, true, true, true, false],
+[false, true, true, false, true, true, true, true, false, true, false, false, true],
+[true, true, false, false, true, false, false, true, false, true, true, true, true],
+[true, true, true, false, true, true, false, true, false, false, false, true, false],
+[true, true, false, false, true, false, false, true, false, true, false, false, true],
+[false, false, true, false, false, false, false, true, false, false, true, true, false],
+[false, true, true, false, true, true, false, true, false, false, true, false, true], 
+[false, true, false, false, true, false, false, true, false, true, true, true, true],
+[false, true, true, false, false, false, true, true, false, false, false, true, false],
+[true, false, true, false, true, false, false, true, false, true, false, false, true],
+[true, false, true, false, false, false, false, true, false, true, false, true, true],
+[true, true, true, false, true, false, true, true, false, true, true, true, false],
+],
+"elems" : 86,
+"startingElements" : 86
+}
+
+{ "name" : "13_2",
+"grid":[true, false, true, false, true, false, false, true, false, true, true, true, true],
+[true, false, false, false, false, false, false, true, false, true, true, true, false],
+[false, true, true, false, true, true, true, true, false, true, false, false, true],
+[true, true, false, false, true, false, false, true, false, true, true, true, true],
+[true, true, true, false, true, true, false, true, false, false, false, true, false],
+[true, true, false, false, true, false, false, true, false, true, false, false, true],
+[false, false, true, false, false, false, false, true, false, false, true, true, false],
+[false, true, true, false, true, true, false, true, false, false, true, false, true], 
+[false, true, false, false, true, false, false, true, false, true, true, true, true],
+[false, true, true, false, false, false, true, true, false, false, false, true, false],
+[true, false, true, false, true, false, false, true, false, true, false, false, true],
+[true, false, true, false, false, false, false, true, false, true, false, true, true],
+[true, true, true, false, true, false, true, true, false, true, true, true, false],
+],
+"elems" : 87,
+"startingElements" : 87
+}

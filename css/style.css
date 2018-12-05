@@ -5,6 +5,8 @@ div.button{
 }
 
 div.button form{
+  /* width: 15%; */
+  /* display: inline-block; */
   color: gray;
 }
 
@@ -67,7 +69,9 @@ p.button {
 }
 
 article p {
-  text-align: center;
+  text-align: left;
+  text-indent: 50px;
+  margin: auto;
   color: white;
 }
 /* end html styling */

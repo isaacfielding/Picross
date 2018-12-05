@@ -53,8 +53,11 @@ function generate_table() {
     if(won == true){
       level = 0;
       won = false;
+      
     }
     puzzle = createLevel(level);
+    updateElements();
+    startingElems = elemCounter;
   }
 
   topHints = makeTopHints(puzzle);
@@ -393,117 +396,52 @@ function createLevel(level){
 }
 
 function puzzle7_1() {
-  puzzle = [
-    [true, true, true, false, true, false, false],
-    [true, true, false, true, false, true, false],
-    [false, false, true, false, false, false, false],
-    [true, false, true, false, true, true, false],
-    [false, true, false, false, false, false, false],
-    [true, true, true, true, true, false, true],
-    [true, false, false, false, true, true, true],
-  ]
+  var xmlhttp = new XMLHttpRequest();
+  xmlhttp.onreadystatechange = function () {
+    if (this.readyState == 4 && this.status == 200) {
+      levels = JSON.parse(this.responseText);
+      puzzle = levels.grid
+      elemCounter = levels.elems
+      startingElems = levels.elems
 
-  for (var i = 0; i < puzzle.length; i++) {
-    for (var j = 0; j < puzzle.length; j++) {
-      if (puzzle[i][j] == true) {
-
-        elemCounter++;
-      }
+      return puzzle;
     }
-    updateElements();
-  }
-
-  startingElems = elemCounter;
-
-  return puzzle;
+  };
+  xmlhttp.open("GET", "levels.txt", true);
+  xmlhttp.send();
 }
 
 function puzzle7_2() {
-  puzzle = [
-    [true, true, false, false, false, false, true],
-    [true, false, true, true, true, false, false],
-    [false, true, true, false, true, false, true],
-    [true, false, true, true, false, true, false],
-    [true, false, false, true, false, true, false],
-    [false, true, true, false, true, false, false],
-    [true, false, true, false, true, false, true],
-  ]
+  var xmlhttp = new XMLHttpRequest();
+  xmlhttp.onreadystatechange = function () {
+    if (this.readyState == 4 && this.status == 200) {
+      levels = JSON.parse(this.responseText);
 
-  for (var i = 0; i < puzzle.length; i++) {
-    for (var j = 0; j < puzzle.length; j++) {
-      if (puzzle[i][j] == true) {
+      console.log(levels);
+      
+      // puzzle = levels.grid
+      // elemCounter = levels.elems
+      // startingElems = levels.elems
 
-        elemCounter++;
-      }
+      return puzzle;
     }
-    updateElements();
-  }
-
-  startingElems = elemCounter;
-
-  return puzzle;
+  };
+  xmlhttp.open("GET", "levels.txt", true);
+  xmlhttp.send();
 }
 
-function puzzle13_1(){
-  puzzle = [
-    [true, false, true, false, true, false, false, true, false, true, true, true, true],
-    [true, false, false, false, false, false, false, true, false, true, true, true, false],
-    [false, true, true, false, true, true, true, true, false, true, false, false, true],
-    [true, true, false, false, true, false, false, true, false, true, true, true, true],
-    [true, true, true, false, true, true, false, true, false, false, false, true, false],
-    [true, true, false, false, true, false, false, true, false, true, false, false, true],
-    [false, false, true, false, false, false, false, true, false, false, true, true, false],
-    [false, true, true, false, true, true, false, true, false, false, true, false, true], 
-    [false, true, false, false, true, false, false, true, false, true, true, true, true],
-    [false, true, true, false, false, false, true, true, false, false, false, true, false],
-    [true, false, true, false, true, false, false, true, false, true, false, false, true],
-    [true, false, true, false, false, false, false, true, false, true, false, true, true],
-    [true, true, true, false, true, false, true, true, false, true, true, true, false],
-  ]
+// function puzzle13_1(){
+//   puzzle = 
+//   elemCounter = 
+//   startingElems = 
 
-  for (var i = 0; i < puzzle.length; i++) {
-    for (var j = 0; j < puzzle.length; j++) {
-      if (puzzle[i][j] == true) {
+//   return puzzle;
+// }
 
-        elemCounter++;
-      }
-    }
-    updateElements();
-  }
+// function puzzle13_2() {
+//   puzzle = 
+//   elemCounter = 
+//   startingElems = 
 
-  startingElems = elemCounter;
-
-  return puzzle;
-}
-
-function puzzle13_2() {
-  puzzle = [
-    [false, true, true, false, true, false, false, true, false, true, false, true, true],
-    [true, true, true, false, true, true, true, true, false, true, false, true, false],
-    [true, false, false, true, true, false, false, true, false, true, false, true, true],
-    [true, false, false, false, true, true, false, false, false, false, false, true, true],
-    [true, true, true, false, true, false, false, true, true, false, false, true, false],
-    [false, false, false, false, true, false, false, false, false, true, false, true, true],
-    [true, true, true, false, true, true, false, true, false, true, false, true, true],
-    [true, true, false, false, true, true, true, true, false, true, false, false, true],
-    [true, true, false, true, false, false, false, true, false, false, false, true, true],
-    [false, false, false, false, true, true, true, true, false, true, false, true, true],
-    [true, false, true, false, true, false, false, false, false, true, false, true, false],
-    [false, false, true, false, true, false, false, true, true, true, false, true, false],
-    [true, true, true, false, true, false, false, true, false, true, false, true, false],
-  ]
-
-  for (var i = 0; i < puzzle.length; i++) {
-    for (var j = 0; j < puzzle.length; j++) {
-      if (puzzle[i][j] == true) {
-
-        elemCounter++;
-      }
-    }
-    updateElements();
-  }
-
-  startingElems = elemCounter;
-
-  return puzzle;
-}
+//   return puzzle;
+// }

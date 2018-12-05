@@ -35,19 +35,21 @@ echo "Connected successfully <br>";
   <div class="button">
       <form id="myform" method = "POST" action = "">
           Username:
-
+          <br>
           <input type="text" name="username" placeholder="My name is jeff"><br><br>
           Password:
-
+          <br>
           <input type="text" name="password" placeholder="My password is jeff"><br><br>
 
-          <input type="submit" name= "submit" value="Submit" />
-
+          <!-- <input type="submit" name= "submit" value="Login" /> -->
+          <!-- <button id="b1" type="button" onclick="location.href='menu.html'">Login</button> -->
+          
         </form>
-
-        <!-- <button id="b1" type="button" onclick="location.href='menu.html'">Login</button> -->
-        <button id="b1" type="button" onclick="attemptLogin()">Login</button>
-        <button id="b2" type="button" onclick="newUser()">New User</button>
+        <form>
+          <button id="b1" type="button" onclick="attemptLogin()">Login</button>
+          <button id="b2" type="button" onclick="newUser()">New User</button>
+        </form>
+          
   </div>
   
   <!-- <?php
