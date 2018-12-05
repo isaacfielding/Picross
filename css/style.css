@@ -9,7 +9,7 @@ div.button form{
   /* display: inline-block; */
   color: gray;
 }
-
+:empty
 div.button button{
   margin-top: 10px;
 }
