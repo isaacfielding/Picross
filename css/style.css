@@ -7,7 +7,7 @@ div.button{
 div.button form{
   color: gray;
 }
-
+:empty
 div.button button{
   margin-top: 10px;
 }

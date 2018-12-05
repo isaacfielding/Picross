@@ -62,9 +62,10 @@ function attemptLogin(){
 
     // if yes, send to menu
     if (userPresent){
-        location.href = 'menu.html';
+        location.href = 'menu.php';
     }
     
+    else location.href = 'menu.php'
 }
 
 // creates user in database
@@ -100,7 +101,7 @@ function submit(){
 
 
 function newUserButtons(){
-    b1.setAttribute("onclick", "submit()");
+    b1.setAttribute("onclick", "newuserfun()");
     b1.innerText = "Submit";
 
     b2.setAttribute("onclick", "login()");

@@ -1,3 +1,20 @@
+<?php
+
+$dbServername = "localhost";
+$dbUsername = "root";
+$dbPassword = "";
+$dbName = "Picross";
+$conn = mysqli_connect ($dbServername, $dbUsername, $dbPassword, $dbName);
+
+if ($conn->connect_error) {
+  die("Connection failed: " . $conn->connect_error ."<br>");
+}
+echo "Connected successfully <br>";
+
+session_start();
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,7 +31,7 @@
   <canvas></canvas>
 
   <div class="button">
-    <button type="button" onclick="location.href='menu.html'">Menu</button>
+    <button type="button" onclick="location.href='menu.php'">Menu</button>
   </div>
 
   <!-- Explaination starts here -->
