@@ -1,3 +1,4 @@
+var submitButton = document.getElementById("submit");
 var b1 = document.getElementById("b1");
 var b2 = document.getElementById("b2");
 var form = document.getElementById("myform");
@@ -57,8 +58,10 @@ function newUser(){
 
 // displays the login form
 function loginButtons(){
-    b1.setAttribute("onclick", "attemptLogin()");
-    b1.innerText = "Login";
+    b1.setAttribute("type", "submit");
+    b1.setAttribute("name", "submit");
+    b1.setAttribute("value", "submit");
+    b1.setAttribute("name", "submit");
 
     b2.setAttribute("onclick", "newUser()");
     b2.innerText = "New User";

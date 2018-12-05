@@ -6,10 +6,10 @@ div.button{
 
 div.button form{
   /* width: 15%; */
-  /* display: inline-block; */
+  display: inline-block;
   color: gray;
 }
-:empty
+
 div.button button{
   margin-top: 10px;
 }

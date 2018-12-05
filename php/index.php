@@ -1,15 +1,15 @@
 <?php
 
-$dbServername = "localhost";
-$dbUsername = "root";
-$dbPassword = "";
-$dbName = "Picross";
-$conn = mysqli_connect ($dbServername, $dbUsername, $dbPassword, $dbName);
+// $dbServername = "localhost";
+// $dbUsername = "root";
+// $dbPassword = "";
+// $dbName = "Picross";
+// $conn = mysqli_connect ($dbServername, $dbUsername, $dbPassword, $dbName);
 
-if ($conn->connect_error) {
-  die("Connection failed: " . $conn->connect_error ."<br>");
-}
-echo "Connected successfully <br>";
+// if ($conn->connect_error) {
+//   die("Connection failed: " . $conn->connect_error ."<br>");
+// }
+// echo "Connected successfully <br>";
 
 session_start();
 
@@ -44,20 +44,16 @@ echo "Favorite color is " . $_SESSION["favcolor"] . ".<br>";
 
   <div class="button">
       <form id="myform" method = "post" action = "">
-          Login:___
+          Login:
 
           <input type="text" name="login" placeholder="My name is jeff"><br><br>
           Password:
 
           <input type="text" name="password" placeholder="My password is jeff"><br><br>
 
-          <input type="submit" name= "submit" value="Login"/>
-
         </form>
-
-        <!-- <button id="b1" type="button" onclick="location.href='menu.php'">Login</button> -->
-
-        <button id="b1" type="button" onclick="attemptLogin()">Title Page</button> 
+        <input type="submit" name= "submit" value="Login" id="b1"/>
+        <button id="b1" type="submit" onclick="attemptLogin()">Title Page</button> 
         <button id="b2" type="button" onclick="newUser()">New User</button>
 
         

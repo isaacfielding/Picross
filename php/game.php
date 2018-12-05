@@ -1,18 +1,16 @@
 <?php
+// $dbServername = "localhost";
+// $dbUsername = "root";
+// $dbPassword = "";
+// $dbName = "Picross";
+// $conn = mysqli_connect ($dbServername, $dbUsername, $dbPassword, $dbName);
 
-$dbServername = "localhost";
-$dbUsername = "root";
-$dbPassword = "";
-$dbName = "Picross";
-$conn = mysqli_connect ($dbServername, $dbUsername, $dbPassword, $dbName);
+// if ($conn->connect_error) {
+//   die("Connection failed: " . $conn->connect_error ."<br>");
+// }
+// echo "Connected successfully <br>";
 
-if ($conn->connect_error) {
-  die("Connection failed: " . $conn->connect_error ."<br>");
-}
-echo "Connected successfully <br>";
-
-session_start();
-
+// session_start();
 ?>
 
 <!DOCTYPE html>
@@ -38,8 +36,6 @@ session_start();
 
     <!-- game size selector -->
     <select id="size">
-      <option value="" disabled selected>Choose a Size</option>
-      <option value="3">3 x 3</option>
       <option value="7">7 x 7</option>
       <option value="13">13 x 13</option>
     </select>
