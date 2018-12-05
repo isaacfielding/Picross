@@ -1,3 +1,20 @@
+<?php
+
+$dbServername = "localhost";
+$dbUsername = "root";
+$dbPassword = "";
+$dbName = "Picross";
+$conn = mysqli_connect ($dbServername, $dbUsername, $dbPassword, $dbName);
+
+if ($conn->connect_error) {
+  die("Connection failed: " . $conn->connect_error ."<br>");
+}
+echo "Connected successfully <br>";
+
+session_start();
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -17,7 +34,7 @@
   <canvas></canvas>
   
   <div class="button">
-    <button type="button" onclick="location.href='menu.html'">Menu</button>
+    <button type="button" onclick="location.href='menu.php'">Menu</button>
 
     <!-- game size selector -->
     <select id="size">
@@ -35,6 +52,7 @@
   <br>
 
     <select id="mode">
+      <option value="" disabled selected>Select a Mode</option>
       <option value="0" >Regular Mode</option>
       <option value="1">Arcade Mode</option>
       <option value="2">Time Attack Mode</option>
