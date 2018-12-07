@@ -54,7 +54,7 @@ echo "Favorite color is " . $_SESSION["favcolor"] . ".<br>";
           <input type="submit" name= "submit" value="Login"/>
 
         </form>
-
+        
         <!-- <button id="b1" type="button" onclick="location.href='menu.php'">Login</button> -->
 
         <button id="b1" type="button" onclick="attemptLogin()">Title Page</button> 
@@ -86,11 +86,15 @@ function newuserfun() {
 
 }
 
+function checkDB() {
+
+  $sql; // Get the queary of the login and password
+  $result ;// $result = $conn->query($sql); 
+
+}
 
 
 
-$sql; // Get the queary of the login and password
-$result ;// $result = $conn->query($sql); 
 
 
 
@@ -116,13 +120,6 @@ if ($result->num_rows > 0) {
 }
 
 */
-
-
-/////////// Inserting New User ///////////////
-
-
-
-////////////////////////////////////////////////////////
 
 ?>
 
