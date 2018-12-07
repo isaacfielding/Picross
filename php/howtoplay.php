@@ -1,15 +1,5 @@
 <?php
 
-$dbServername = "localhost";
-$dbUsername = "root";
-$dbPassword = "";
-$dbName = "Picross";
-$conn = mysqli_connect ($dbServername, $dbUsername, $dbPassword, $dbName);
-
-if ($conn->connect_error) {
-  die("Connection failed: " . $conn->connect_error ."<br>");
-}
-echo "Connected successfully <br>";
 
 session_start();
 

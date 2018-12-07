@@ -60,8 +60,16 @@ function loginButtons(){
     b1.setAttribute("onclick", "attemptLogin()");
     b1.innerText = "Login";
 
-    b2.setAttribute("onclick", "newUser()");
+    b2.setAttribute("onclick", "newuserfun()");
     b2.innerText = "New User";
+}
+
+function newUserButtons(){
+    b1.setAttribute("onclick", "newuserfun()");
+    b1.innerText = "Submit";
+
+    b2.setAttribute("onclick", "login()");
+    b2.innerText = "Cancel";
 }
 
 // checks for user in database
@@ -111,10 +119,3 @@ function submit(){
 
 
 
-function newUserButtons(){
-    b1.setAttribute("onclick", "newuserfun()");
-    b1.innerText = "Submit";
-
-    b2.setAttribute("onclick", "login()");
-    b2.innerText = "Cancel";
-}

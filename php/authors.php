@@ -27,7 +27,16 @@ session_start();
     <h2>Isaac Fielding</h2>
     <article>
       <p style="width:30%">
-        Fieldings stuff
+        A student at fresno state, majoring in computer science. Isaac is new to the field of webdevelopment. This project
+        is his first project utilizing PHP and second using SQL.
+      </p>
+      <p style="width:30%">
+          Isaac is hopefully going to be graduating from Fresno State in the Spring of 2019 with his bachelors in computer science and 
+        will be commissioned into the United States Army as a 2nd Lieutenant in the branch of aviation. He aspires to fly 
+        the AH-64, commonly known as the "Apache" but not the server kind.
+      </p>
+      <p style="width:30%">
+          He does not plan on utilizing his degree in computer science. Like at all. He thinks that this was much better as a hobby.
       </p>
     </article>
   </section>
