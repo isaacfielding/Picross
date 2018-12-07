@@ -2,7 +2,6 @@
 session_start();
 ?>
 
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,7 +10,7 @@ session_start();
   <link rel="stylesheet" type="text/css" href="../css/style.css">
 </head>
 <header>
-  <h1>Picross</h1>
+  <h1>New User</h1>
 </header>
 <body>
 
@@ -20,18 +19,32 @@ session_start();
 
 
   <div class="button">
-  <form action="login.php" method="post" enctype="multipart/form-data">
+  <form action="register.php" method="post" enctype="multipart/form-data">
           Login:___
 
           <input type="text" name="login" placeholder="My name is jeff"><br><br>
           Password:
 
           <input type="password" name="password" placeholder="My password is jeff"><br><br>
+          Firstname:
 
-          <input type="submit" name= "submit" value="Login"/>
+          <input type="text" name="firstname" placeholder="My firstname is jeff"><br><br>
+          Lastname:
+
+          <input type="text" name="age" placeholder="My age is jeff"><br><br>
+          Age:___
+
+          <input type="text" name="lastname" placeholder="My lastname is jeff"><br><br>
+          Gender:__
+
+          <input type="text" name="gender" placeholder="My gender is jeff"><br><br>
+          Location: 
+
+          <input type="text" name="location" placeholder="My location is jeff"><br><br>
+
+          <input type="submit" name= "submit" value="Register"/>
+
   </form>
-        <br><button id="b2" type="button" onclick="location.href='newuser.php'">New User</button>
-
         
   </div>
 </body>

@@ -1,18 +1,5 @@
 <?php
-
-// $dbServername = "localhost";
-// $dbUsername = "root";
-// $dbPassword = "";
-// $dbName = "Picross";
-// $conn = mysqli_connect ($dbServername, $dbUsername, $dbPassword, $dbName);
-
-// if ($conn->connect_error) {
-//   die("Connection failed: " . $conn->connect_error ."<br>");
-// }
-// echo "Connected successfully <br>";
-
-// session_start();
-
+session_start();
 ?>
 
 
@@ -33,6 +20,9 @@
 
   <div class="button">
     <button type="button" onclick="location.href='index.php'">Title</button>
+  </div>
+  <div id="Welcome Username" class="button">
+   <?php echo "Welcome, " . $_SESSION['login']; ?>
   </div>
   <div class="button">
     <button type="button" onclick="location.href='game.php'">Start Game</button>
