@@ -58,7 +58,10 @@ h2 {
 section h2 {
   text-align: center;
 }
-
+#Welcome{
+  text-align: right;
+  color: gray;
+}
 h3 {
   text-align: center;
   color: gray;

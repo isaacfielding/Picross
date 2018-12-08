@@ -37,7 +37,6 @@ session_start();
   <br>
 
     <select id="mode">
-      <option value="" disabled selected>Select a Mode</option>
       <option value="0" >Regular Mode</option>
       <option value="1">Arcade Mode</option>
       <option value="2">Time Attack Mode</option>

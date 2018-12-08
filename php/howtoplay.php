@@ -25,7 +25,7 @@ session_start();
   <section>
     <h2>The Board</h2>
     <article>
-      <p>
+      <p style="text-align: center">
         The board of picross is made up of squares, each square is selectable. Selecting a square will <br>
         fill it in with a different color. On the top and side of the board are a series of hints. These <br>
         tell you how many spaces are to be filled in within each column and row they are placed by. <br>
@@ -35,7 +35,7 @@ session_start();
     </article>
     <h2>The Goal</h2>
     <article>
-      <p>
+      <p style="text-align: center">
         The goal is to solve the puzzle using the hints provided for each puzzle to fill in the grid and<br>
         produce the picture hidden. Each square that is incorrect counts against you so choose wisely!
       </p>
@@ -45,11 +45,11 @@ session_start();
     <h2>The Game Modes</h2>
     <article>
       <h3>Arcade Mode</h3>
-      <p>
+      <p style="text-align: center">
         Finish a series of predefined levels.
       </p>
       <h3>Time Attack Mode</h3>
-      <p>
+      <p style="text-align: center">
         Finish a series of levels as fast as possible.
       </p>
     </article>
