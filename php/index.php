@@ -19,22 +19,26 @@ session_start();
   <canvas></canvas>
 
 
-  <div class="button">
+  <div class="login">
   <form action="login.php" method="post" enctype="multipart/form-data">
-          Login:___
-
+          Login:
+          <br>
           <input type="text" name="login" placeholder="My name is jeff"><br><br>
           Password:
-
+          <br>
           <input type="password" name="password" placeholder="My password is jeff"><br><br>
 
+        <div class="button">
           <input type="submit" name= "submit" value="Login"/>
+          <br>
+          <button id="b2" type="button" onclick="location.href='newuser.php'">New User</button>
+        </div>
   </form>
-        <br><button id="b2" type="button" onclick="location.href='newuser.php'">New User</button>
+        
 
         
   </div>
 </body>
-<!-- <script src="../js/canvas.js" charset="utf-8"></script> --> 
+<script src="../js/canvas.js" charset="utf-8"></script> 
 <script src="../js/form.js" charset="utf-8"></script>
 </html>
