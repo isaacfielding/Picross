@@ -17,7 +17,6 @@ session_start();
   <h1>Picross</h1>
   <!-- turn counter on the right -->
 </header>
-<body>
 
   <!-- our canvas element for which we will use to draw animations in the background of our webpage -->
   <canvas></canvas>
