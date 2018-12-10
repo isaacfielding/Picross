@@ -6,10 +6,10 @@ div.button{
 
 div.button form{
   /* width: 15%; */
-  /* display: inline-block; */
+  display: inline-block;
   color: gray;
 }
-:empty
+
 div.button button{
   margin-top: 10px;
 }
@@ -58,7 +58,10 @@ h2 {
 section h2 {
   text-align: center;
 }
-
+#Welcome{
+  text-align: right;
+  color: gray;
+}
 h3 {
   text-align: center;
   color: gray;

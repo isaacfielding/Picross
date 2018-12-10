@@ -173,7 +173,7 @@ function makeTopHints(puzzle) {
   
   // counter for keeping track of the number of trues in a row.
   var counter = 0;
-  var hints = "";
+
   for (var j = 0; j < puzzle.length; j++) {
 		for (var i = 0; i < puzzle.length; i++) {
 			if (puzzle[i][j] == true) {
@@ -395,42 +395,27 @@ function createLevel(level){
   return puzzle;
 }
 
-function puzzle7_1() {
-  var xmlhttp = new XMLHttpRequest();
-  xmlhttp.onreadystatechange = function () {
-    if (this.readyState == 4 && this.status == 200) {
-      levels = JSON.parse(this.responseText);
-      puzzle = levels.grid
-      elemCounter = levels.elems
-      startingElems = levels.elems
+// function puzzle7_1() {
 
-      return puzzle;
-    }
-  };
-  xmlhttp.open("GET", "levels.txt", true);
-  xmlhttp.send();
-}
 
-function puzzle7_2() {
-  var xmlhttp = new XMLHttpRequest();
-  xmlhttp.onreadystatechange = function () {
-    if (this.readyState == 4 && this.status == 200) {
-      levels = JSON.parse(this.responseText);
+//   puzzle = 
+//   elemCounter =
+//   startingElems = 
 
-      console.log(levels);
-      
-      // puzzle = levels.grid
-      // elemCounter = levels.elems
-      // startingElems = levels.elems
+//   return puzzle;
+// }
 
-      return puzzle;
-    }
-  };
-  xmlhttp.open("GET", "levels.txt", true);
-  xmlhttp.send();
-}
+// function puzzle7_2() {
+
+//   puzzle =
+//   elemCounter =
+//   startingElems = 
+
+//   return puzzle;
+// }
 
 // function puzzle13_1(){
+  
 //   puzzle = 
 //   elemCounter = 
 //   startingElems = 
@@ -439,6 +424,7 @@ function puzzle7_2() {
 // }
 
 // function puzzle13_2() {
+  
 //   puzzle = 
 //   elemCounter = 
 //   startingElems = 

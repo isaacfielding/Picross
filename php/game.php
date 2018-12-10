@@ -1,9 +1,11 @@
 <?php
+<<<<<<< HEAD
 
 include "connections.php";
 
+=======
+>>>>>>> 0abcba12bb5836eeb34df171a8668e15531d8916
 session_start();
-
 ?>
 
 <!DOCTYPE html>
@@ -54,8 +56,6 @@ if ($result->num_rows > 0) {
 
     <!-- game size selector -->
     <select id="size">
-      <option value="" disabled selected>Choose a Size</option>
-      <option value="3">3 x 3</option>
       <option value="7">7 x 7</option>
       <option value="13">13 x 13</option>
     </select>
@@ -68,7 +68,6 @@ if ($result->num_rows > 0) {
   <br>
 
     <select id="mode">
-      <option value="" disabled selected>Select a Mode</option>
       <option value="0" >Regular Mode</option>
       <option value="1">Arcade Mode</option>
       <option value="2">Time Attack Mode</option>

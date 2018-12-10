@@ -10,9 +10,14 @@ session_start();
   <title>Picross Game</title>
   <link rel="stylesheet" type="text/css" href="../css/style.css">
 </head>
+
 <header>
+  <h3 id="Welcome">
+   <?php echo "Welcome, " . $_SESSION['login']; ?>
+  </h3>
   <h1>Menu</h1>
 </header>
+
 <body>
 
   <!-- our canvas element for which we will use to draw animations in the background of our webpage -->
@@ -21,9 +26,7 @@ session_start();
   <div class="button">
     <button type="button" onclick="location.href='index.php'">Title</button>
   </div>
-  <div id="Welcome Username" class="button">
-   <?php echo "Welcome, " . $_SESSION['login']; ?>
-  </div>
+  
   <div class="button">
     <button type="button" onclick="location.href='game.php'">Start Game</button>
   </div>
