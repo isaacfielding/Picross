@@ -1,5 +1,7 @@
 <?php
 
+include "connections.php";
+
 session_start();
 
 ?>
@@ -12,6 +14,7 @@ session_start();
   <link rel="stylesheet" type="text/css" href="../css/style.css">
   
 </head>
+<body>
 <header>
   <!-- needs a timer value display element: left side -->
   <h1>Picross</h1>
@@ -21,6 +24,31 @@ session_start();
   <!-- our canvas element for which we will use to draw animations in the background of our webpage -->
   <canvas></canvas>
   
+  <?php
+////////////////////////// Table Generation ///////////////////////////
+
+$conn=connect();
+
+$sql = "SELECT player, duration, errorcount FROM Games ORDER BY duration LIMIT 5";
+//$sql = "SELECT player, duration, errorcount FROM Games ORDER BY errorcount LIMIT 5";
+
+$result = $conn->query($sql);
+
+if ($result->num_rows > 0) {
+    echo "<table><tr><th>Player</th><th>Time</th><th>Errors</th></tr>";
+    // output data of each row
+    while($row = $result->fetch_assoc()) {
+        echo "<tr><td>" . $row["player"]. "</td><td>" . $row["duration"]. " " . $row["errorcount"]. "</td></tr>";
+    }
+    echo "</table>";
+} else {
+    echo "0 results";
+}
+
+/////////////////////////////////////////////////////////////////////
+?>
+
+
   <div class="button">
     <button type="button" onclick="location.href='menu.php'">Menu</button>
 

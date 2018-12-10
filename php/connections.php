@@ -1,13 +1,21 @@
 <?php
 
+
+
 $dbServername = "localhost";
 $dbUsername = "root";
 $dbPassword = "";
 $dbName = "Picross";
-$conn = mysqli_connect ($dbServername, $dbUsername, $dbPassword, $dbName);
 
-if ($conn->connect_error) {
-  die("Connection failed: " . $conn->connect_error ."<br>");
+function connect() {
+  global $dbServername, $dbUsername, $dbPassword, $dbName;
+  $conn = mysqli_connect ($dbServername, $dbUsername, $dbPassword, $dbName);
+
+  if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error ."<br>");
+
+  }
+  return $conn;
 }
 
 /*
