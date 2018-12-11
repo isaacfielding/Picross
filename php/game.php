@@ -1,4 +1,10 @@
 <?php
+<<<<<<< HEAD
+
+include "connections.php";
+
+=======
+>>>>>>> 0abcba12bb5836eeb34df171a8668e15531d8916
 session_start();
 ?>
 
