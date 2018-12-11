@@ -67,7 +67,6 @@ function generate_table() {
   sideHints = makeSideHints(puzzle);
 
   var area = document.getElementById("picross");
-  area.setAttribute("style", "width: 50%");
 
   // creates a <table> element and a <tbody> element
   var tbl = document.createElement("table");
@@ -96,7 +95,7 @@ function generate_table() {
       else if (i !== 0 && j == 0) {
         var cell = document.createElement("td");
         cell.setAttribute("id", "row " + String(i) + " hint");
-        cell.setAttribute("style", "background-color: transparent; height: 40px; width: max-content;")
+        cell.setAttribute("style", "background-color: transparent; height: 40px; width: 80px;")
         cell.innerText = "0";
         row.appendChild(cell);
       } 
@@ -128,8 +127,6 @@ function generate_table() {
   turnCounter = 0;
   updateTurns();
   won = false;
-
-  centerTable();
 }
 
 function stopTime(){
@@ -282,7 +279,6 @@ function buttonClick(id) {
       document.getElementById("picross").appendChild(congrats);
       document.getElementById("picross").appendChild(errors);
     }
-    
   }
 }
 
@@ -369,11 +365,6 @@ function centerGUI(){
     width += Number(gui[i].clientWidth);
   }
   document.getElementById("gui").setAttribute("style", "width: " + String(width + 10) + "px");
-}
-
-function centerTable(){
-  var table = document.getElementById("ptable");
-  document.getElementById("picross").setAttribute("style", "width: " + String(table.clientWidth + 2) + "px");
 }
 
 function createLevel(level){

@@ -20,23 +20,20 @@ session_start();
 
 
   <div class="login">
-  <form action="login.php" method="post" enctype="multipart/form-data">
-          Login:
-          <br>
-          <input type="text" name="login" placeholder="My name is jeff"><br><br>
-          Password:
-          <br>
-          <input type="password" name="password" placeholder="My password is jeff"><br><br>
+    <form action="login.php" method="post" enctype="multipart/form-data">
+            Login:
+            <br>
+            <input type="text" name="login" placeholder="My name is jeff"><br><br>
+            Password:
+            <br>
+            <input type="password" name="password" placeholder="My password is jeff"><br><br>
 
-        <div class="button">
-          <input type="submit" name= "submit" value="Login"/>
-          <br>
-          <button id="b2" type="button" onclick="location.href='newuser.php'">New User</button>
-        </div>
-  </form>
-        
-
-        
+          <div class="button">
+            <input type="submit" name= "submit" value="Login"/>
+            <br>
+            <button id="b2" type="button" onclick="location.href='newuser.php'">New User</button>
+          </div>
+    </form>
   </div>
 </body>
 <script src="../js/canvas.js" charset="utf-8"></script> 

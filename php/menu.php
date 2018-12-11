@@ -10,15 +10,13 @@ session_start();
   <title>Picross Game</title>
   <link rel="stylesheet" type="text/css" href="../css/style.css">
 </head>
-
-<header>
-  <h3 id="Welcome">
-   <?php echo "Welcome, " . $_SESSION['login']; ?>
-  </h3>
-  <h1>Menu</h1>
-</header>
-
 <body>
+  <header>
+    <h3 id="Welcome">
+    <?php echo "Welcome, " . $_SESSION['login']; ?>
+    </h3>
+    <h1>Menu</h1>
+  </header>
 
   <!-- our canvas element for which we will use to draw animations in the background of our webpage -->
   <canvas></canvas>

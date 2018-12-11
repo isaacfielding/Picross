@@ -9,10 +9,11 @@ session_start();
   <title>Picross Game</title>
   <link rel="stylesheet" type="text/css" href="../css/style.css">
 </head>
-<header>
-  <h1>New User</h1>
-</header>
 <body>
+  <header>
+    <h1>New User</h1>
+  </header>
+
   <!-- our canvas element for which we will use to draw animations in the background of our webpage -->
   <canvas></canvas>
 
