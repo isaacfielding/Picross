@@ -364,7 +364,7 @@ function centerGUI(){
   for (var i = 0; i < gui.length; i++){
     width += Number(gui[i].clientWidth);
   }
-  document.getElementById("gui").setAttribute("style", "width: " + String(width + 10) + "px");
+  document.getElementById("gui").setAttribute("style", "width: " + String(width + 30) + "px");
 }
 
 function createLevel(level){
