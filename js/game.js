@@ -48,6 +48,8 @@ function generate_table() {
   // generate key for puzzle
   if (gameType == 0) {
     puzzle = creatRandomPuzzle(height);
+    console.log(puzzle);
+    
   }
   else if (gameType == 1 || gameType == 2) {
     if(won == true){
@@ -65,7 +67,6 @@ function generate_table() {
   sideHints = makeSideHints(puzzle);
 
   var area = document.getElementById("picross");
-  area.setAttribute("style", "width: 50%");
 
   // creates a <table> element and a <tbody> element
   var tbl = document.createElement("table");
@@ -94,7 +95,7 @@ function generate_table() {
       else if (i !== 0 && j == 0) {
         var cell = document.createElement("td");
         cell.setAttribute("id", "row " + String(i) + " hint");
-        cell.setAttribute("style", "background-color: transparent; height: 40px; width: 80px")
+        cell.setAttribute("style", "background-color: transparent; height: 40px; width: 80px;")
         cell.innerText = "0";
         row.appendChild(cell);
       } 
@@ -126,8 +127,6 @@ function generate_table() {
   turnCounter = 0;
   updateTurns();
   won = false;
-
-  centerTable();
 }
 
 function stopTime(){
@@ -231,8 +230,8 @@ function buttonClick(id) {
   var state = button.getAttribute("class");
   
   var idArr = id.split(" ");
-  var i = idArr[0];
-  var j = idArr[1];
+  var i = Number(idArr[0]);
+  var j = Number(idArr[1]);
     
   if (state == "off" && puzzle[i-1][j-1] == true) {
     elemCounter--;
@@ -280,7 +279,6 @@ function buttonClick(id) {
       document.getElementById("picross").appendChild(congrats);
       document.getElementById("picross").appendChild(errors);
     }
-    
   }
 }
 
@@ -335,7 +333,8 @@ function printSideArrays(array){
 }
 
 function updateColors(){
-  var cells = new Array(Number(document.getElementById("size").value) + 1)
+  var cells = new Array(Number(document.getElementById("size").value)+1)
+  console.log("Cells value:"+ cells.length);
   
   var gridColorButton = document.getElementById("gridColorSetting").value;
   gridColor = gridColorButton;
@@ -347,12 +346,13 @@ function updateColors(){
       if (i !== 0 && j !== 0) {
         cell = document.getElementById(String(i) + " " +String(j));
         if (cell.className == "on"){
-          if (puzzle[i][j] == true){
+          if (puzzle[i-1][j-1] == true){
             cell.setAttribute("style", "background-color: " + hitColor);
-          }          
+          }        
         }
-        if (cell.className == "off")
+        if (cell.className == "off"){
           cell.setAttribute("style", "background-color: " + gridColor);
+        }
       }
     }
   }
@@ -364,13 +364,7 @@ function centerGUI(){
   for (var i = 0; i < gui.length; i++){
     width += Number(gui[i].clientWidth);
   }
-  document.getElementById("gui").setAttribute("style", "width: " + String(width + 10) + "px");
-  // document.getElementById("gui").setAttribute("style", "width: 30%");
-}
-
-function centerTable(){
-  var table = document.getElementById("ptable");
-  document.getElementById("picross").setAttribute("style", "width: " + String(table.clientWidth + 2) + "px");
+  document.getElementById("gui").setAttribute("style", "width: " + String(width + 30) + "px");
 }
 
 function createLevel(level){

@@ -3,6 +3,8 @@
 include "connections.php";
 
 session_start();
+
+
 ?>
 
 <!DOCTYPE html>
