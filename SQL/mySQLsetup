@@ -21,6 +21,7 @@ id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
 player VARCHAR(30) NOT NULL, 
 duration VARCHAR(30) NOT NULL,
 errorcount VARCHAR(30) NOT NULL,
+size VARCHAR(30) NOT NULL,
 reg_date TIMESTAMP
 );
 
@@ -34,29 +35,29 @@ INSERT INTO Players (login , password, firstname , lastname , age , gender , loc
 
 INSERT INTO Players (login , password, firstname , lastname , age , gender , location ) VALUES ('mmello317', 'password2', 'matt' , 'mello' , '22' , 'Q' , 'California');
 
-INSERT INTO Games (player, duration, errorcount) VALUES ('isaacfielding1', '4:33', '4');
+INSERT INTO Games (player, duration, errorcount, size) VALUES ('isaacfielding1', '4:33', '4', '7');
 
-INSERT INTO Games (player, duration, errorcount) VALUES ('mmello317', '2:04', '9');
+INSERT INTO Games (player, duration, errorcount, size) VALUES ('mmello317', '2:04', '9', '7');
 
-INSERT INTO Games (player, duration, errorcount) VALUES ('isaacfielding1', '0:33', '7');
+INSERT INTO Games (player, duration, errorcount, size) VALUES ('isaacfielding1', '0:33', '7', '13');
 
-INSERT INTO Games (player, duration, errorcount) VALUES ('mmello317', '2:44', '9');
+INSERT INTO Games (player, duration, errorcount, size) VALUES ('mmello317', '2:44', '9', '7');
 
-INSERT INTO Games (player, duration, errorcount) VALUES ('isaacfielding1', '0:55', '3');
+INSERT INTO Games (player, duration, errorcount, size) VALUES ('isaacfielding1', '0:55', '3', '13');
 
-INSERT INTO Games (player, duration, errorcount) VALUES ('mmello317', '1:44', '0');
+INSERT INTO Games (player, duration, errorcount, size) VALUES ('mmello317', '1:44', '0', '7');
 
-INSERT INTO Games (player, duration, errorcount) VALUES ('jeff', '1:33', '5');
+INSERT INTO Games (player, duration, errorcount, size) VALUES ('jeff', '1:33', '5', '13');
 
-INSERT INTO Games (player, duration, errorcount) VALUES ('mmello317', '2:07', '8');
+INSERT INTO Games (player, duration, errorcount, size) VALUES ('mmello317', '2:07', '8', '7');
 
-INSERT INTO Games (player, duration, errorcount) VALUES ('isaacfielding1', '0:13', '8');
+INSERT INTO Games (player, duration, errorcount, size) VALUES ('isaacfielding1', '0:13', '8', '13');
 
-INSERT INTO Games (player, duration, errorcount) VALUES ('mmello317', '2:44', '5');
+INSERT INTO Games (player, duration, errorcount, size) VALUES ('mmello317', '2:44', '5', '13');
 
-INSERT INTO Games (player, duration, errorcount) VALUES ('isaacfielding1', '3:55', '3');
+INSERT INTO Games (player, duration, errorcount, size) VALUES ('isaacfielding1', '3:55', '3', '7');
 
-INSERT INTO Games (player, duration, errorcount) VALUES ('mmello317', '0:44', '0');
+INSERT INTO Games (player, duration, errorcount, size) VALUES ('mmello317', '0:44', '0', '7');
 
 INSERT INTO Levels (gameid) VALUES ('2234_3x3');
 

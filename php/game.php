@@ -26,15 +26,74 @@ session_start();
   <canvas></canvas>
   
   
+  <form class="radios" action = "" method="post">
+        <input type="radio" name="size" value="7"> 7
+        <input type="radio" name="size" value="13"> 13
+        <input type="radio" name="selection" value="errors"> Errors
+        <input type="radio" name="selection" value="time"> Time
+        <input type="radio" name="rank" value="best"> Best
+        <input type="radio" name="rank" value="worst"> Worst
+        <input type="submit" name="Go" value = "GO">
+  </form>
 
 <div class="left">
+
   <?php
   ////////////////////////// Table Generation ///////////////////////////
 
   $conn=connect();
 
-  $sql = "SELECT player, duration, errorcount FROM Games ORDER BY duration LIMIT 5";
-  //$sql = "SELECT player, duration, errorcount FROM Games ORDER BY errorcount LIMIT 5";
+  $_SESSION["size"] = $_POST["size"];
+  $_SESSION["selection"] = $_POST["selection"];
+  $_SESSION["rank"] = $_POST["rank"];
+
+
+
+  if ( !isset($_SESSION["size"]) || !isset($_SESSION["size"]) || !isset($_SESSION["size"])){
+
+    echo "Leaderboard Not Set";
+
+  }
+
+  elseif ($_SESSION["selection"] == 'time' && $_SESSION["size"] == '7' && $_SESSION["rank"] == 'best'){
+    $sql = "SELECT player, duration, errorcount FROM Games WHERE (size = '7') ORDER BY duration ASC LIMIT 5";
+  }
+
+  elseif ($_SESSION["selection"] == 'time' && $_SESSION["size"] == '7' && $_SESSION["rank"] == 'worst'){
+    $sql = "SELECT player, duration, errorcount FROM Games WHERE (size = '7') ORDER BY duration DESC LIMIT 5";
+  }
+
+  elseif ($_SESSION["selection"] == 'time' && $_SESSION["size"] == '13' && $_SESSION["rank"] == 'best'){
+    $sql = "SELECT player, duration, errorcount FROM Games WHERE (size = '13') ORDER BY duration ASC LIMIT 5";
+  }
+
+  elseif ($_SESSION["selection"] == 'time' && $_SESSION["size"] == '13' && $_SESSION["rank"] == 'worst'){
+    $sql = "SELECT player, duration, errorcount FROM Games WHERE (size = '13') ORDER BY duration DESC LIMIT 5";
+  }
+
+
+
+  elseif ($_SESSION["selection"] == 'errors' && $_SESSION["size"] == '7' && $_SESSION["rank"] == 'best'){
+    $sql = "SELECT player, duration, errorcount FROM Games WHERE (size = '7') ORDER BY errorcount ASC LIMIT 5";
+  }
+
+  elseif ($_SESSION["selection"] == 'errors' && $_SESSION["size"] == '7' && $_SESSION["rank"] == 'worst'){
+    $sql = "SELECT player, duration, errorcount FROM Games WHERE (size = '7') ORDER BY errorcount DESC LIMIT 5";
+  }
+
+  elseif ($_SESSION["selection"] == 'errors' && $_SESSION["size"] == '13' && $_SESSION["rank"] == 'best'){
+    $sql = "SELECT player, duration, errorcount FROM Games WHERE (size = '13') ORDER BY errorcount ASC LIMIT 5";
+  }
+
+  elseif ($_SESSION["selection"] == 'errors' && $_SESSION["size"] == '13' && $_SESSION["rank"] == 'worst'){
+    $sql = "SELECT player, duration, errorcount FROM Games WHERE (size = '13') ORDER BY errorcount DESC LIMIT 5";
+  }
+
+  else {
+    $sql = "SELECT player, duration, errorcount FROM Games WHERE (size = '7') ORDER BY duration LIMIT 5";
+  }
+  
+
 
   $result = $conn->query($sql);
 
@@ -55,13 +114,11 @@ session_start();
 
   ?>
 
-  <form class="radios" action="">
-        <input type="radio" name="selection" value="errors"> By Errors
-        <input type="radio" name="selection" value="time"> By Time
-  </form>
+
+
 </div>
 <div class="middle">
-  <div class="button">
+  <form class="button">
     <button type="button" onclick="location.href='menu.php'">Menu</button>
 
     <!-- game size selector -->
@@ -101,7 +158,7 @@ session_start();
   
     <!-- Updates the colors of the grid and hits when clicked -->
     <button type="button" id="colorButton" onclick="updateColors()">Change Color</button>
-  </div>
+  </form>
 </div>
 <div class="right">
   <!-- Display elements for game progress -->
