@@ -49,7 +49,7 @@ session_start();
 
 
 
-  if ( !isset($_SESSION["size"]) || !isset($_SESSION["size"]) || !isset($_SESSION["size"])){
+  if ( !isset($_SESSION["selection"]) || !isset($_SESSION["size"]) || !isset($_SESSION["rank"])){
 
     echo "Leaderboard Not Set";
 
@@ -94,7 +94,7 @@ session_start();
   }
   
 
-
+  
   $result = $conn->query($sql);
 
   if ($result->num_rows > 0) {
