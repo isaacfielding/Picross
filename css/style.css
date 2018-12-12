@@ -177,6 +177,7 @@ td:hover {
   border-color: gray;
   background-color: white;
   margin: auto;
+  margin-top: 10px;
 }
 
 /* Header styling */
@@ -207,6 +208,7 @@ td:hover {
   border-right-color: gray;
   padding-left: 10px; 
   padding-right: 10px;
+  outline: 1px;
 }
 
 /* End Leaderboard styling */

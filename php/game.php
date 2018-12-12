@@ -31,8 +31,6 @@ include "connections.php";
           <input type="submit" name="Go" value = "GO">
     </form>
 
-  <div class="left">
-
     <?php
     ////////////////////////// Table Generation ///////////////////////////
 
@@ -168,7 +166,6 @@ include "connections.php";
   <div class="left2" id="sideBar" style="padding-top: 10%;">
     <button type="button" onclick="getGoodHint()" style="font-size: 16pt">Good Move Hint</button>
     <button type="button" onclick="getBadHint()" style="font-size: 16pt">Bad Move Hint</button>
-    <button type="button" onclick="solve()" style="font-size: 16pt">Solve</button>
   </div>
   <div class="right2">
     <!-- when table is generated, it will populate the picross div -->

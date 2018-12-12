@@ -3,6 +3,7 @@
 var turnCounter = 0;
 var turns = document.getElementById("turnCount");
 var elemCounter = 0;
+var badElems = 0;
 var elems = document.getElementById("elemCount");
 var startTime;
 var currentTime;
@@ -148,6 +149,7 @@ function creatRandomPuzzle(size){
         puzzle[i][j] = true;
         elemCounter++;
 			} else {
+        badElems++;
 				puzzle[i][j] = false;
 			}
     }
@@ -360,34 +362,6 @@ function updateColors(){
   }
 }
 
-function solve(){
-  var button = document.getElementById(i + " " + j);
-  var state = button.getAttribute("class");
-
-  for (var i = 0; i <= puzzle.length; i++) {
-    for (var j = 0; j <= puzzle.length; j++) {
-      if (i !== 0 && j !== 0) {
-        cell = document.getElementById(String(i) + " " + String(j));
-        if (state == "off" && puzzle[i - 1][j - 1] == true) {
-          cell.style.backgroundColor = hitColor;
-          cell.setAttribute("class", "on");
-        }
-      }
-    }
-  }
-
-  won = true;
-  stopTime();
-  var congrats = document.createElement("h1");
-  var errors = document.createElement("h1");
-  congrats.setAttribute("id", "congrats");
-  errors.setAttribute("id", "errors");
-  congrats.innerText = "Congratulations! You Suck!"
-  errors.innerText = "Errors: Alot";
-  document.getElementById("sideBar").appendChild(congrats);
-  document.getElementById("sideBar").appendChild(errors);
-}
-
 function getGoodHint() {
   while(elemCounter != 0){
     var i = Math.round(Math.random() * (puzzle.length - 1) + 1);
@@ -412,7 +386,25 @@ function getGoodHint() {
 }
 
 function getBadHint(){
+  while (badElems != 0) {
+    var i = Math.round(Math.random() * (puzzle.length - 1) + 1);
+    var j = Math.round(Math.random() * (puzzle.length - 1) + 1);
+    console.log(i + " " + j);
 
+    var button = document.getElementById(i + " " + j);
+    var state = button.getAttribute("class");
+
+
+    if (state == "off" && puzzle[i - 1][j - 1] == false) {
+      button.setAttribute("class", "on");
+      button.style.backgroundColor = "orange";
+      badElems--;
+      turnCounter += 3;
+      updateElements();
+      updateTurns();
+      return;
+    }
+  }
 }
 
 function centerGUI(){
