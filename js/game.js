@@ -438,39 +438,118 @@ function createLevel(level){
   return puzzle;
 }
 
-// function puzzle7_1() {
+function puzzle7_1() {
+  puzzle = [
+    [true, true, true, false, true, false, false],
+    [true, true, false, true, false, true, false],
+    [false, false, true, false, false, false, false],
+    [true, false, true, false, true, true, false],
+    [false, true, false, false, false, false, false],
+    [true, true, true, true, true, false, true],
+    [true, false, false, false, true, true, true],
+  ]
 
+  for (var i = 0; i < puzzle.length; i++) {
+    for (var j = 0; j < puzzle.length; j++) {
+      if (puzzle[i][j] == true) {
 
-//   puzzle = 
-//   elemCounter =
-//   startingElems = 
+        elemCounter++;
+      }
+    }
+    updateElements();
+  }
 
-//   return puzzle;
-// }
+  startingElems = elemCounter;
 
-// function puzzle7_2() {
+  return puzzle;
+}
 
-//   puzzle =
-//   elemCounter =
-//   startingElems = 
+function puzzle7_2() {
+  puzzle = [
+    [true, true, false, false, false, false, true],
+    [true, false, true, true, true, false, false],
+    [false, true, true, false, true, false, true],
+    [true, false, true, true, false, true, false],
+    [true, false, false, true, false, true, false],
+    [false, true, true, false, true, false, false],
+    [true, false, true, false, true, false, true],
+  ]
 
-//   return puzzle;
-// }
+  for (var i = 0; i < puzzle.length; i++) {
+    for (var j = 0; j < puzzle.length; j++) {
+      if (puzzle[i][j] == true) {
 
-// function puzzle13_1(){
-  
-//   puzzle = 
-//   elemCounter = 
-//   startingElems = 
+        elemCounter++;
+      }
+    }
+    updateElements();
+  }
 
-//   return puzzle;
-// }
+  startingElems = elemCounter;
 
-// function puzzle13_2() {
-  
-//   puzzle = 
-//   elemCounter = 
-//   startingElems = 
+  return puzzle;
+}
 
-//   return puzzle;
-// }
+function puzzle13_1(){
+  puzzle = [
+    [true, false, true, false, true, false, false, true, false, true, true, true, true],
+    [true, false, false, false, false, false, false, true, false, true, true, true, false],
+    [false, true, true, false, true, true, true, true, false, true, false, false, true],
+    [true, true, false, false, true, false, false, true, false, true, true, true, true],
+    [true, true, true, false, true, true, false, true, false, false, false, true, false],
+    [true, true, false, false, true, false, false, true, false, true, false, false, true],
+    [false, false, true, false, false, false, false, true, false, false, true, true, false],
+    [false, true, true, false, true, true, false, true, false, false, true, false, true], 
+    [false, true, false, false, true, false, false, true, false, true, true, true, true],
+    [false, true, true, false, false, false, true, true, false, false, false, true, false],
+    [true, false, true, false, true, false, false, true, false, true, false, false, true],
+    [true, false, true, false, false, false, false, true, false, true, false, true, true],
+    [true, true, true, false, true, false, true, true, false, true, true, true, false],
+  ]
+
+  for (var i = 0; i < puzzle.length; i++) {
+    for (var j = 0; j < puzzle.length; j++) {
+      if (puzzle[i][j] == true) {
+
+        elemCounter++;
+      }
+    }
+    updateElements();
+  }
+
+  startingElems = elemCounter;
+
+  return puzzle;
+}
+
+function puzzle13_2() {
+  puzzle = [
+    [false, true, true, false, true, false, false, true, false, true, false, true, true],
+    [true, true, true, false, true, true, true, true, false, true, false, true, false],
+    [true, false, false, true, true, false, false, true, false, true, false, true, true],
+    [true, false, false, false, true, true, false, false, false, false, false, true, true],
+    [true, true, true, false, true, false, false, true, true, false, false, true, false],
+    [false, false, false, false, true, false, false, false, false, true, false, true, true],
+    [true, true, true, false, true, true, false, true, false, true, false, true, true],
+    [true, true, false, false, true, true, true, true, false, true, false, false, true],
+    [true, true, false, true, false, false, false, true, false, false, false, true, true],
+    [false, false, false, false, true, true, true, true, false, true, false, true, true],
+    [true, false, true, false, true, false, false, false, false, true, false, true, false],
+    [false, false, true, false, true, false, false, true, true, true, false, true, false],
+    [true, true, true, false, true, false, false, true, false, true, false, true, false],
+  ]
+
+  for (var i = 0; i < puzzle.length; i++) {
+    for (var j = 0; j < puzzle.length; j++) {
+      if (puzzle[i][j] == true) {
+
+        elemCounter++;
+      }
+    }
+    updateElements();
+  }
+
+  startingElems = elemCounter;
+
+  return puzzle;
+}
