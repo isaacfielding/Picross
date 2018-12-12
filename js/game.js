@@ -250,8 +250,12 @@ function buttonClick(id) {
   updateElements();
   updateTurns();
   
+  checkWin();
+}
+
+function checkWin(){
   if (elemCounter == 0) {
-    if (gameType == 0){
+    if (gameType == 0) {
       won = true;
       stopTime();
       var congrats = document.createElement("h1");
@@ -260,14 +264,14 @@ function buttonClick(id) {
       errors.setAttribute("id", "errors");
       congrats.innerText = "Congratulations! You Won!"
       errors.innerText = "Errors: " + String(turnCounter - startingElems);
-      document.getElementById("picross").appendChild(congrats);
-      document.getElementById("picross").appendChild(errors);
+      document.getElementById("sideBar").appendChild(congrats);
+      document.getElementById("sideBar").appendChild(errors);
     }
-    else if((gameType == 1 || gameType == 2) && level != 1){
+    else if ((gameType == 1 || gameType == 2) && level != 1) {
       level++;
       start();
     }
-    else if ((gameType == 1 || gameType == 2) && level == 1){
+    else if ((gameType == 1 || gameType == 2) && level == 1) {
       won = true;
       stopTime();
       var congrats = document.createElement("h1");
@@ -276,22 +280,21 @@ function buttonClick(id) {
       errors.setAttribute("id", "errors");
       congrats.innerText = "Congratulations! You Won!"
       errors.innerText = "Errors: " + String(turnCounter - startingElems);
-      document.getElementById("picross").appendChild(congrats);
-      document.getElementById("picross").appendChild(errors);
+      document.getElementById("sideBar").appendChild(congrats);
+      document.getElementById("sideBar").appendChild(errors);
     }
   }
 }
-
 function delete_table() {
   var table = document.getElementById("ptable");
   table.parentNode.removeChild(table);
 }
 
 function delete_msg() {
-  var game = document.getElementById("picross");
+  var area = document.getElementById("sideBar");
   
-  game.removeChild(document.getElementById("congrats"));
-  game.removeChild(document.getElementById("errors"));
+  area.removeChild(document.getElementById("congrats"));
+  area.removeChild(document.getElementById("errors"));
 }
 
 function updateTurns() {
@@ -334,7 +337,6 @@ function printSideArrays(array){
 
 function updateColors(){
   var cells = new Array(Number(document.getElementById("size").value)+1)
-  console.log("Cells value:"+ cells.length);
   
   var gridColorButton = document.getElementById("gridColorSetting").value;
   gridColor = gridColorButton;
@@ -344,7 +346,7 @@ function updateColors(){
   for (var i = 0; i < cells.length; i++){
     for (var j = 0; j < cells.length; j++){
       if (i !== 0 && j !== 0) {
-        cell = document.getElementById(String(i) + " " +String(j));
+        cell = document.getElementById(String(i) + " " + String(j));
         if (cell.className == "on"){
           if (puzzle[i-1][j-1] == true){
             cell.setAttribute("style", "background-color: " + hitColor);
@@ -356,6 +358,61 @@ function updateColors(){
       }
     }
   }
+}
+
+function solve(){
+  var button = document.getElementById(i + " " + j);
+  var state = button.getAttribute("class");
+
+  for (var i = 0; i <= puzzle.length; i++) {
+    for (var j = 0; j <= puzzle.length; j++) {
+      if (i !== 0 && j !== 0) {
+        cell = document.getElementById(String(i) + " " + String(j));
+        if (state == "off" && puzzle[i - 1][j - 1] == true) {
+          cell.style.backgroundColor = hitColor;
+          cell.setAttribute("class", "on");
+        }
+      }
+    }
+  }
+
+  won = true;
+  stopTime();
+  var congrats = document.createElement("h1");
+  var errors = document.createElement("h1");
+  congrats.setAttribute("id", "congrats");
+  errors.setAttribute("id", "errors");
+  congrats.innerText = "Congratulations! You Suck!"
+  errors.innerText = "Errors: Alot";
+  document.getElementById("sideBar").appendChild(congrats);
+  document.getElementById("sideBar").appendChild(errors);
+}
+
+function getGoodHint() {
+  while(elemCounter != 0){
+    var i = Math.round(Math.random() * (puzzle.length - 1) + 1);
+    var j = Math.round(Math.random() * (puzzle.length - 1) + 1);
+    console.log(i + " " + j);
+
+    var button = document.getElementById(i + " " + j);
+    var state = button.getAttribute("class");
+
+    
+    if (state == "off" && puzzle[i - 1][j - 1] == true) {
+      button.setAttribute("class", "on");
+      button.style.backgroundColor = hitColor;
+      elemCounter--;
+      turnCounter += 3;
+      updateElements();
+      updateTurns();
+      checkWin();
+      return;
+    }
+  }
+}
+
+function getBadHint(){
+
 }
 
 function centerGUI(){

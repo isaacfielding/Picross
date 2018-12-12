@@ -6,6 +6,13 @@ div.button{
   display: block;
 }
 
+form.button{
+  text-align: center;
+  width: max-content;
+  margin: auto;
+  display: block;
+}
+
 div.login form{
   width: max-content;
   margin: auto;
@@ -26,6 +33,10 @@ div.button form{
 }
 
 div.button button{
+  margin-top: 10px;
+}
+
+form.button button{
   margin-top: 10px;
 }
 
@@ -61,7 +72,7 @@ h1 {
   color: gray;
 }
 
-div.button h3 {
+form.button h3 {
   display: inline-block;
   color: gray;
 }
@@ -77,6 +88,7 @@ section h2 {
   text-align: right;
   color: gray;
 }
+
 h3 {
   text-align: center;
   color: gray;
@@ -109,11 +121,24 @@ article p {
   width: 33.33%;
 }
 
+.right2 {
+  float: left;
+  width: 66.66%;
+}
+
+.left2{
+  float: left;
+  text-align: center;
+  width: 33.33%;
+}
+
 .sbs:after {
   content: "";
   display: table;
   clear: both;
 }
+
+
 /* end html styling */
 
 /* Picross Table Styling */
