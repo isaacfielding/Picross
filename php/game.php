@@ -42,7 +42,7 @@ session_start();
       echo "<table id=\"leaderboard\"><tr><th>Player</th><th>Time</th><th>Errors</th></tr>";
       // output data of each row
       while($row = $result->fetch_assoc()) {
-          echo "<tr><td>" . $row["player"]. "</td><td>" . $row["duration"]. " " . $row["errorcount"]. "</td></tr>";
+          echo "<tr><td>" . $row["player"]. "</td><td>" . $row["duration"]. "</td><td>" . $row["errorcount"]. "</td></tr>";
       }
       echo "</table>";
   } else {
