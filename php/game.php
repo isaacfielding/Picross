@@ -39,11 +39,13 @@ session_start();
   $result = $conn->query($sql);
 
   if ($result->num_rows > 0) {
-      echo "<table id=\"leaderboard\"><tr><th>Player</th><th>Time</th><th>Errors</th></tr>";
-      // output data of each row
-      while($row = $result->fetch_assoc()) {
-          echo "<tr><td>" . $row["player"]. "</td><td>" . $row["duration"]. " " . $row["errorcount"]. "</td></tr>";
-      }
+      echo "<table id=\"leaderboard\"><tr><th>Rank</th><th>Player</th><th>Time</th><th>Errors</th></tr>";
+        // output data of each row
+        $counter = 1;
+        while($row = $result->fetch_assoc()) {
+            echo "<tr><td>" . $counter. "</td><td>" . $row["player"]. "</td><td>" . $row["duration"]. "</td><td>" . $row["errorcount"]. "</td></tr>";
+            $counter += 1;
+        }
       echo "</table>";
   } else {
       echo "0 results";
