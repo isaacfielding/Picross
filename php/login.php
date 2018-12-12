@@ -33,6 +33,7 @@ else{
             exit();
         }
     }
+    else exit ();
 }
 
 $conn -> close();
