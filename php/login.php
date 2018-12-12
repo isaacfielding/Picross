@@ -23,11 +23,11 @@ else{
     if ($row = mysqli_fetch_assoc($result)) {
         $check = password_verify($newpassword, $row['password']);
         if ($check == false) {
-            $error = " Wrong Password ";
+            header("Location: index.php?error=Wrong Password");
         }
         else if ($check == true){
             session_start();
-            $_SESSION['login'] = $row['login'];
+            $_SESSION['login'] = $row['login'];   
             header("Location: menu.php");
         
             exit();

@@ -40,8 +40,6 @@ include "connections.php";
     $_SESSION["selection"] = $_POST["selection"];
     $_SESSION["rank"] = $_POST["rank"];
 
-
-
     if ( !isset($_SESSION["size"]) || !isset($_SESSION["selection"]) || !isset($_SESSION["rank"])){
 
       echo "Leaderboard Not Set";
