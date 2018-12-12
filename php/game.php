@@ -45,8 +45,13 @@ if ($result->num_rows > 0) {
 }
 
 /////////////////////////////////////////////////////////////////////
+
 ?>
 
+<form action="">
+      <input type="radio" name="selection" value="errors"> By Errors
+      <input type="radio" name="selection" value="time"> By Time
+</form>
 
   <div class="button">
     <button type="button" onclick="location.href='menu.php'">Menu</button>

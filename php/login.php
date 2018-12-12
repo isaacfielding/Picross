@@ -1,6 +1,9 @@
 <?php
 
-include_once("connections.php");
+session_start();
+include "connections.php";
+$conn=connect();
+
 
 $newlogin = $_POST['login']; 
 $newpassword = $_POST['password'];
@@ -13,8 +16,10 @@ if(empty($newlogin) || empty($newpassword)) {
 }
 
 else{
+
     $sql = "SELECT * FROM Players WHERE login = '$newlogin';"; // Get the queary of the login and password
     $result = $conn->query($sql); 
+
     if ($row = mysqli_fetch_assoc($result)) {
         $check = password_verify($newpassword, $row['password']);
         if ($check == false) {

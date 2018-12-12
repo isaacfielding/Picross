@@ -1,4 +1,5 @@
 <?php
+include "connections.php";
 session_start();
 ?>
 

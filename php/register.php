@@ -1,6 +1,7 @@
 <?php
 
-include_once("connections.php");
+include "connections.php";
+$conn=connect();
 
   $newlogin = $_POST['login']; 
   $newpassword = $_POST['password'];
@@ -14,12 +15,9 @@ include_once("connections.php");
 
   $sql = "INSERT INTO Players (login, password , firstname, lastname, age, gender, location)
   VALUES ('$newlogin', '$password', '$newnfirstame', '$newlastname', '$newage' , '$newgender' ,'$newlocation')";
+  $result = $conn->query($sql);
 
-  if ($conn->query($sql) === TRUE) {
-      echo "New record created successfully";
-  } else {
-     echo "Error: " . $sql . "<br>" . $conn->error;
-  }
+ 
 
   header("Location: index.php?error=".$error);
   exit();

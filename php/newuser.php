@@ -1,5 +1,7 @@
 <?php
+include "connections.php";
 session_start();
+$conn=connect();
 ?>
 
 <!DOCTYPE html>

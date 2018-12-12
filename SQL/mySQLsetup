@@ -46,6 +46,18 @@ INSERT INTO Games (player, duration, errorcount) VALUES ('isaacfielding1', '0:55
 
 INSERT INTO Games (player, duration, errorcount) VALUES ('mmello317', '1:44', '0');
 
+INSERT INTO Games (player, duration, errorcount) VALUES ('jeff', '1:33', '5');
+
+INSERT INTO Games (player, duration, errorcount) VALUES ('mmello317', '2:07', '8');
+
+INSERT INTO Games (player, duration, errorcount) VALUES ('isaacfielding1', '0:13', '8');
+
+INSERT INTO Games (player, duration, errorcount) VALUES ('mmello317', '2:44', '5');
+
+INSERT INTO Games (player, duration, errorcount) VALUES ('isaacfielding1', '3:55', '3');
+
+INSERT INTO Games (player, duration, errorcount) VALUES ('mmello317', '0:44', '0');
+
 INSERT INTO Levels (gameid) VALUES ('2234_3x3');
 
 
