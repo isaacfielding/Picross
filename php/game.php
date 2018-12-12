@@ -25,36 +25,40 @@ session_start();
   <!-- our canvas element for which we will use to draw animations in the background of our webpage -->
   <canvas></canvas>
   
+  
+
+<div class="left">
   <?php
-////////////////////////// Table Generation ///////////////////////////
+  ////////////////////////// Table Generation ///////////////////////////
 
-$conn=connect();
+  $conn=connect();
 
-$sql = "SELECT player, duration, errorcount FROM Games ORDER BY duration LIMIT 5";
-//$sql = "SELECT player, duration, errorcount FROM Games ORDER BY errorcount LIMIT 5";
+  $sql = "SELECT player, duration, errorcount FROM Games ORDER BY duration LIMIT 5";
+  //$sql = "SELECT player, duration, errorcount FROM Games ORDER BY errorcount LIMIT 5";
 
-$result = $conn->query($sql);
+  $result = $conn->query($sql);
 
-if ($result->num_rows > 0) {
-    echo "<table><tr><th>Player</th><th>Time</th><th>Errors</th></tr>";
-    // output data of each row
-    while($row = $result->fetch_assoc()) {
-        echo "<tr><td>" . $row["player"]. "</td><td>" . $row["duration"]. " " . $row["errorcount"]. "</td></tr>";
-    }
-    echo "</table>";
-} else {
-    echo "0 results";
-}
+  if ($result->num_rows > 0) {
+      echo "<table id=\"leaderboard\"><tr><th>Player</th><th>Time</th><th>Errors</th></tr>";
+      // output data of each row
+      while($row = $result->fetch_assoc()) {
+          echo "<tr><td>" . $row["player"]. "</td><td>" . $row["duration"]. " " . $row["errorcount"]. "</td></tr>";
+      }
+      echo "</table>";
+  } else {
+      echo "0 results";
+  }
 
-/////////////////////////////////////////////////////////////////////
+  /////////////////////////////////////////////////////////////////////
 
-?>
+  ?>
 
-<form action="">
-      <input type="radio" name="selection" value="errors"> By Errors
-      <input type="radio" name="selection" value="time"> By Time
-</form>
-
+  <form class="radios" action="">
+        <input type="radio" name="selection" value="errors"> By Errors
+        <input type="radio" name="selection" value="time"> By Time
+  </form>
+</div>
+<div class="middle">
   <div class="button">
     <button type="button" onclick="location.href='menu.php'">Menu</button>
 
@@ -68,7 +72,7 @@ if ($result->num_rows > 0) {
     <button type="button" id="generate" onclick="start()">Generate</button>
 
     <!-- these breaks make the game type below the other buttons -->
-  <br>
+  
   <br>
 
     <select id="mode">
@@ -96,7 +100,8 @@ if ($result->num_rows > 0) {
     <!-- Updates the colors of the grid and hits when clicked -->
     <button type="button" id="colorButton" onclick="updateColors()">Change Color</button>
   </div>
-
+</div>
+<div class="right">
   <!-- Display elements for game progress -->
   <div id="gui">
     <ul id="elements">
@@ -112,6 +117,8 @@ if ($result->num_rows > 0) {
       <h2 id="time">0:00</h2>
     </ul>
   </div>
+</div>
+  
 
   <!-- when table is generated, it will populate the picross div -->
   <div id="picross"></div>
